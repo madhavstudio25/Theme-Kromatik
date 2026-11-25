@@ -226,6 +226,23 @@ video {
 /* ============================================================
    3. CUSTOM CURSOR FOLLOWER
    ============================================================ */
+/* Hide default operating system cursor on devices with fine pointer (mouse / trackpad) */
+@media (hover: hover) and (pointer: fine) {
+  body,
+  body * {
+    cursor: none !important;
+  }
+
+  /* Retain standard text cursor for typing inside form fields */
+  body input[type="text"],
+  body input[type="email"],
+  body input[type="password"],
+  body input[type="search"],
+  body textarea {
+    cursor: text !important;
+  }
+}
+
 .cux-layer {
   position: fixed;
   inset: 0;
