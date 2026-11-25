@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<!-- image strategy: picture+webp -->
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Journal & Perspectives — Kromatik Digital Innovation Studio</title>
+  <meta name="description"
+    content="Thoughts, design engineering essays and strategic perspectives on spatial interfaces, brand kinetics, and artificial intelligence from the Kromatik Atelier.">
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="preload" as="image" href="assets/images/blog-1.webp" type="image/webp" fetchpriority="high">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="assets/js/vendor/gsap.min.js"></script>
+  <script src="assets/js/vendor/ScrollTrigger.min.js"></script>
+  <script src="assets/js/vendor/lenis.min.js"></script>
+</head>
+
+
+<body class="theme-light">
+  <!-- Custom Cursor Follower -->
+  <div class="cux-layer" id="cux-layer" aria-hidden="true">
+    <div class="cux-dot" id="cux-dot"></div>
+    <div class="cux-ring" id="cux-ring">
+      <span class="cux-label" id="cux-label"></span>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       1. Header Navigation
+       Primary sticky navigation bar with logo, nav links and CTA.
+       Editing hint: update links and contact button destination.
+       ============================================================ -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-logo hd-brand" aria-label="Kromatik home">
+        <span class="hd-mark" aria-hidden="true"></span>
+        <span>Kromatik<span class="dot">.</span></span>
+      </a>
+
+      <nav class="nav-links" id="hdNav" aria-label="Main Navigation">
+        <span class="hd-pill" id="hdPill" aria-hidden="true"></span>
+        <a href="index.html#about" data-sec="about"><span class="rl"><span>About</span><span
+              aria-hidden="true">About</span></span></a>
+        <a href="index.html#services" data-sec="services"><span class="rl"><span>Services</span><span
+              aria-hidden="true">Services</span></span></a>
+        <a href="index.html#works" data-sec="works"><span class="rl"><span>Works</span><span
+              aria-hidden="true">Works</span></span></a>
+        <a href="index.html#accolades" data-sec="accolades"><span class="rl"><span>Awards</span><span
+              aria-hidden="true">Awards</span></span></a>
+        <a href="journal.html" class="active" aria-current="page"><span class="rl"><span>Journal</span><span
+              aria-hidden="true">Journal</span></span></a>
+        <a href="index.html#faq" data-sec="faq"><span class="rl"><span>FAQ</span><span
+              aria-hidden="true">FAQ</span></span></a>
+      </nav>
+
+      <div class="hd-right">
+        <a href="index.html#contact" class="header-cta-btn">
+          <span class="rl"><span>LET'S TALK</span><span aria-hidden="true">LET'S TALK</span></span>
+          <i class="hd-arrow"><svg viewBox="0 0 24 24">
+              <path d="M7 17L17 7M17 7H7M17 7V17" />
+            </svg></i>
+        </a>
+        <button class="hd-menu" id="hdMenu" type="button" aria-label="Open menu" aria-expanded="false"
+          aria-controls="menuOverlay">
+          <svg class="hd-ring" viewBox="0 0 50 50" aria-hidden="true">
+            <circle id="hdRing" cx="25" cy="25" r="24" />
+          </svg>
+          <span class="ln l1"></span><span class="ln l2"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="menu-overlay" id="menuOverlay" data-lenis-prevent role="dialog" aria-modal="true" aria-label="Site menu">
+    <div class="container mo-inner">
+      <nav class="mo-list" aria-label="Full menu">
+        <a href="index.html#hero"><span class="mo-n">01</span><span class="mo-mask"><span
+              class="mo-in">Home</span></span></a>
+        <a href="index.html#about"><span class="mo-n">02</span><span class="mo-mask"><span
+              class="mo-in">About</span></span></a>
+        <a href="index.html#process"><span class="mo-n">03</span><span class="mo-mask"><span
+              class="mo-in">Process</span></span></a>
+        <a href="index.html#services"><span class="mo-n">04</span><span class="mo-mask"><span
+              class="mo-in">Services</span></span></a>
+        <a href="index.html#works"><span class="mo-n">05</span><span class="mo-mask"><span
+              class="mo-in">Works</span></span></a>
+        <a href="index.html#capabilities"><span class="mo-n">06</span><span class="mo-mask"><span
+              class="mo-in">Capabilities</span></span></a>
+        <a href="index.html#accolades"><span class="mo-n">07</span><span class="mo-mask"><span
+              class="mo-in">Awards</span></span></a>
+        <a href="index.html#atelier"><span class="mo-n">08</span><span class="mo-mask"><span
+              class="mo-in">Atelier</span></span></a>
+        <a href="index.html#testimonials"><span class="mo-n">09</span><span class="mo-mask"><span
+              class="mo-in">Voices</span></span></a>
+        <a href="journal.html"><span class="mo-n">10</span><span class="mo-mask"><span
+              class="mo-in">Journal</span></span></a>
+        <a href="index.html#faq"><span class="mo-n">11</span><span class="mo-mask"><span
+              class="mo-in">FAQ</span></span></a>
+        <a href="index.html#planner"><span class="mo-n">12</span><span class="mo-mask"><span
+              class="mo-in">Plan</span></span></a>
+        <a href="index.html#contact"><span class="mo-n">13</span><span class="mo-mask"><span
+              class="mo-in">Contact</span></span></a>
+      </nav>
+      <div class="mo-meta">
+        <div class="mo-fade mo-lbl">AUDIO ATMOSPHERE</div>
+        <button class="mo-fade mo-sound-btn" id="menuSoundToggle" type="button" aria-label="Toggle Sound">
+          <span id="menuSoundIcon">🔊</span>
+          <span id="menuSoundLabel">SOUND: ON</span>
+          <span class="mo-sound-switch"><span class="mo-sound-knob"></span></span>
+        </button>
+        <div class="mo-fade mo-lbl">GET IN TOUCH</div>
+        <a class="mo-fade mo-mail" href="mailto:hello@kromatik.studio">hello@kromatik.studio</a>
+        <div class="mo-fade mo-lbl">ELSEWHERE</div>
+        <div class="mo-fade mo-soc"><a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a><a
+            href="https://dribbble.com" target="_blank" rel="noopener">Dribbble</a><a href="https://linkedin.com"
+            target="_blank" rel="noopener">LinkedIn</a></div>
+        <div class="mo-fade mo-lbl">Z&Uuml;RICH &middot; TOKYO &middot; NEW YORK</div>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <!-- ============================================================
+         2. Journal Archive Hero & Featured Story
+         Editorial archive header, category filters and featured plate.
+         Editing hint: update article titles, tags, and cover images.
+         ============================================================ -->
+    <section class="journal-archive-section">
+      <div class="container">
+        <!-- Hero Header -->
+        <div class="journal-hero-header">
+          <div class="journal-hero-topline">
+            <span class="pill-kicker on-light"><span class="badge-dot-live"></span> THE ATELIER DISPATCHES</span>
+
+          </div>
+          <h1 class="journal-h1">THOUGHTS &amp; PERSPECTIVES</h1>
+          <p class="journal-subtitle">
+            Essays, architectural breakdowns, and strategic perspectives on creative engineering, spatial interfaces,
+            and brand kinetics from the Kromatik laboratory.
+          </p>
+          <div class="journal-hero-metrics">
+            <div class="metric-chip"><span class="metric-num">18</span> <span class="metric-lbl">Curated
+                Dispatches</span></div>
+            <div class="metric-chip-div"></div>
+            <div class="metric-chip"><span class="metric-num">04</span> <span class="metric-lbl">Core Disciplines</span>
+            </div>
+            <div class="metric-chip-div"></div>
+            <div class="metric-chip"><span class="metric-num">100%</span> <span class="metric-lbl">Design
+                Engineered</span></div>
+          </div>
+        </div>
+
+        <!-- Featured Big Story Plate -->
+        <article class="journal-featured-card" data-cur="READ">
+          <div class="journal-featured-media">
+            <div class="featured-media-badge"><span class="badge-dot-live"></span> EDITORIAL LEAD DISPATCH</div>
+            <picture>
+              <source srcset="assets/images/blog-1.webp" type="image/webp">
+              <img src="assets/images/blog-1.jpg" alt="The Digital Innovation Studio: A Haven for Creative Engineering"
+                width="1600" height="1000" fetchpriority="high" decoding="async">
+            </picture>
+          </div>
+          <div class="journal-featured-content">
+            <div class="journal-meta-row">
+              <span class="pill-kicker on-light pill-micro">FEATURED DISPATCH</span>
+              <span>MAY 2, 2026</span>
+              <span>•</span>
+              <span>6 MIN READ</span>
+            </div>
+            <h2 class="journal-featured-title">
+              <a href="article.html">The Digital Innovation Studio: A Haven for Creative Engineering</a>
+            </h2>
+            <p class="journal-featured-excerpt">
+              How bridging the chasm between software engineering and obsessive visual art produces tactile, living
+              digital products that resonate across global juries.
+            </p>
+            <div class="journal-author-row">
+              <picture>
+                <source srcset="assets/images/team-elena.webp" type="image/webp">
+                <img src="assets/images/team-elena.jpg" alt="Elena Vance" width="88" height="88"
+                  class="author-avatar-img" loading="lazy" decoding="async">
+              </picture>
+              <div>
+                <div class="author-name-text">Elena Vance</div>
+                <div class="author-role-text">Design Director &amp; Partner</div>
+              </div>
+            </div>
+            <div>
+              <a href="article.html" class="btn-learn-more">
+                <span>Read Full Essay</span>
+                <span>→</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- ============================================================
+               Editorial Filter & Search Toolbar
+               Awwwards-grade architectural segmented filter + live search
+               ============================================================ -->
+        <div class="journal-filter-toolbar">
+          <div class="journal-filter-tabs" role="tablist" aria-label="Filter dispatches by discipline">
+            <button class="j-tab-btn active" data-cat="all" role="tab" aria-selected="true">
+              <span class="j-tab-num">01</span>
+              <span class="j-tab-title">ALL DISPATCHES</span>
+              <span class="j-tab-tag">06</span>
+            </button>
+            <button class="j-tab-btn" data-cat="engineering" role="tab" aria-selected="false">
+              <span class="j-tab-num">02</span>
+              <span class="j-tab-title">ENGINEERING</span>
+              <span class="j-tab-tag">02</span>
+            </button>
+            <button class="j-tab-btn" data-cat="spatial" role="tab" aria-selected="false">
+              <span class="j-tab-num">03</span>
+              <span class="j-tab-title">SPATIAL &amp; AI</span>
+              <span class="j-tab-tag">02</span>
+            </button>
+            <button class="j-tab-btn" data-cat="culture" role="tab" aria-selected="false">
+              <span class="j-tab-num">04</span>
+              <span class="j-tab-title">CULTURE &amp; TEAM</span>
+              <span class="j-tab-tag">02</span>
+            </button>
+          </div>
+
+          <div class="journal-filter-controls">
+            <div class="journal-search-wrap">
+              <svg class="j-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                aria-hidden="true">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+              <input type="text" id="journalSearchInput" class="journal-search-field" placeholder="Search dispatches..."
+                aria-label="Search dispatches" autocomplete="off" spellcheck="false">
+              <button type="button" id="journalSearchClear" class="j-search-clear is-hidden"
+                aria-label="Clear search">✕</button>
+            </div>
+            <div class="journal-results-indicator">
+              <span class="pulse-indicator-dot"></span>
+              <span id="journalCountDisplay">SHOWING <strong>6</strong> DISPATCHES</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Empty Search State -->
+        <div id="journalEmptyState" class="journal-empty-state is-hidden">
+          <div class="empty-state-icon">✦</div>
+          <h3 class="empty-state-title">NO MATCHING DISPATCHES</h3>
+          <p class="empty-state-desc">No articles match your current filter or search criteria. Try a different term or
+            reset your filters.</p>
+          <button type="button" id="journalResetFilterBtn" class="btn-reset-filters">RESET ALL FILTERS ↺</button>
+        </div>
+
+        <!-- Curated Articles Grid -->
+        <div class="articles-grid journal-grid">
+          <!-- Article Card 1 -->
+          <article class="article-card" data-cat="engineering" data-cur="READ">
+            <div class="article-thumb">
+              <div class="thumb-badge-row">
+                <span class="card-cat-badge">COLLABORATION</span>
+                <span class="card-time-badge">4 MIN READ</span>
+              </div>
+              <picture>
+                <source srcset="assets/images/blog-2.webp" type="image/webp">
+                <img src="assets/images/blog-2.jpg" alt="Communication Between Cross-Disciplinary Departments"
+                  width="800" height="500" loading="lazy" decoding="async">
+              </picture>
+            </div>
+            <div class="article-card-body">
+              <h3 class="article-title"><a href="article.html" class="title-link-clean">Communication Between
+                  Cross-Disciplinary Departments</a></h3>
+              <p class="article-excerpt">How we dismantle communication barriers between front-end engineering, motion
+                design, and brand strategy for frictionless product delivery.</p>
+              <div class="article-card-footer">
+                <div class="article-author-meta">
+                  <picture>
+                    <source srcset="assets/images/team-marcus.webp" type="image/webp">
+                    <img src="assets/images/team-marcus.jpg" alt="Marcus Chen" class="author-micro-avatar" width="26"
+                      height="26" loading="lazy">
+                  </picture>
+                  <span class="author-micro-name">Marcus Chen</span>
+                  <span class="author-meta-dot">•</span>
+                  <span class="article-date-text">Apr 28, 2026</span>
+                </div>
+                <a href="article.html" class="article-arrow-btn" aria-label="Read full article">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M7 17L17 7M17 7H7M17 7V17" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Article Card 2 -->
+          <article class="article-card" data-cat="engineering" data-cur="READ">
+            <div class="article-thumb">
+              <div class="thumb-badge-row">
+                <span class="card-cat-badge">TOOLING</span>
+                <span class="card-time-badge">7 MIN READ</span>
+              </div>
+              <picture>
+                <source srcset="assets/images/blog-3.webp" type="image/webp">
+                <img src="assets/images/blog-3.jpg" alt="Best Prototyping & Interaction Tools for Modern Designers"
+                  width="800" height="500" loading="lazy" decoding="async">
+              </picture>
+            </div>
+            <div class="article-card-body">
+              <h3 class="article-title"><a href="article.html" class="title-link-clean">Best Prototyping & Interaction
+                  Tools for Modern Designers</a></h3>
+              <p class="article-excerpt">A critical review of procedural shaders, WebGL canvas sandboxes, and modern
+                component token generators powering high-framerate interactions.</p>
+              <div class="article-card-footer">
+                <div class="article-author-meta">
+                  <picture>
+                    <source srcset="assets/images/team-naoko.webp" type="image/webp">
+                    <img src="assets/images/team-naoko.jpg" alt="Naoko Mori" class="author-micro-avatar" width="26"
+                      height="26" loading="lazy">
+                  </picture>
+                  <span class="author-micro-name">Naoko Mori</span>
+                  <span class="author-meta-dot">•</span>
+                  <span class="article-date-text">Apr 24, 2026</span>
+                </div>
+                <a href="article.html" class="article-arrow-btn" aria-label="Read full article">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M7 17L17 7M17 7H7M17 7V17" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Article Card 3 -->
+          <article class="article-card" data-cat="spatial" data-cur="READ">
+            <div class="article-thumb">
+              <div class="thumb-badge-row">
+                <span class="card-cat-badge">SPATIAL &amp; AI</span>
+                <span class="card-time-badge">5 MIN READ</span>
+              </div>
+              <picture>
+                <source srcset="assets/images/project-1.webp" type="image/webp">
+                <img src="assets/images/project-1.jpg"
+                  alt="Autonomous Neural Ecosystems: Designing Generative Brand Identities" width="800" height="500"
+                  loading="lazy" decoding="async">
+              </picture>
+            </div>
+            <div class="article-card-body">
+              <h3 class="article-title"><a href="article.html" class="title-link-clean">Autonomous Neural Ecosystems:
+                  Generative Brand Identities</a></h3>
+              <p class="article-excerpt">Examining how machine intelligence and generative SVG meshes can evolve living
+                visual identities in real-time according to user sentiment.</p>
+              <div class="article-card-footer">
+                <div class="article-author-meta">
+                  <picture>
+                    <source srcset="assets/images/team-elena.webp" type="image/webp">
+                    <img src="assets/images/team-elena.jpg" alt="Elena Vance" class="author-micro-avatar" width="26"
+                      height="26" loading="lazy">
+                  </picture>
+                  <span class="author-micro-name">Elena Vance</span>
+                  <span class="author-meta-dot">•</span>
+                  <span class="article-date-text">Apr 19, 2026</span>
+                </div>
+                <a href="article.html" class="article-arrow-btn" aria-label="Read full article">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M7 17L17 7M17 7H7M17 7V17" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Article Card 4 -->
+          <article class="article-card" data-cat="spatial" data-cur="READ">
+            <div class="article-thumb">
+              <div class="thumb-badge-row">
+                <span class="card-cat-badge">ENGINEERING</span>
+                <span class="card-time-badge">6 MIN READ</span>
+              </div>
+              <picture>
+                <source srcset="assets/images/commission-1.webp" type="image/webp">
+                <img src="assets/images/commission-1.jpg" alt="The Physics of Fluid Motion in Modern Web Architectures"
+                  width="800" height="500" loading="lazy" decoding="async">
+              </picture>
+            </div>
+            <div class="article-card-body">
+              <h3 class="article-title"><a href="article.html" class="title-link-clean">The Physics of Fluid Motion in
+                  Modern Web Architectures</a></h3>
+              <p class="article-excerpt">Deconstructing spring mechanics, momentum preservation, and 120 FPS render
+                loops in GPU-accelerated micro-interactions.</p>
+              <div class="article-card-footer">
+                <div class="article-author-meta">
+                  <picture>
+                    <source srcset="assets/images/team-julian.webp" type="image/webp">
+                    <img src="assets/images/team-julian.jpg" alt="Julian Thorne" class="author-micro-avatar" width="26"
+                      height="26" loading="lazy">
+                  </picture>
+                  <span class="author-micro-name">Julian Thorne</span>
+                  <span class="author-meta-dot">•</span>
+                  <span class="article-date-text">Apr 14, 2026</span>
+                </div>
+                <a href="article.html" class="article-arrow-btn" aria-label="Read full article">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M7 17L17 7M17 7H7M17 7V17" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Article Card 5 -->
+          <article class="article-card" data-cat="culture" data-cur="READ">
+            <div class="article-thumb">
+              <div class="thumb-badge-row">
+                <span class="card-cat-badge">CULTURE</span>
+                <span class="card-time-badge">5 MIN READ</span>
+              </div>
+              <picture>
+                <source srcset="assets/images/studio-meeting.webp" type="image/webp">
+                <img src="assets/images/studio-meeting.jpg" alt="Why Craft and Performance Are Inseparable in 2026"
+                  width="800" height="500" loading="lazy" decoding="async">
+              </picture>
+            </div>
+            <div class="article-card-body">
+              <h3 class="article-title"><a href="article.html" class="title-link-clean">Why Craft and Performance Are
+                  Inseparable in 2026</a></h3>
+              <p class="article-excerpt">High-fidelity creative direction means nothing if Lighthouse scores plummet.
+                How our studio balances bespoke aesthetic rigor with sub-second performance.</p>
+              <div class="article-card-footer">
+                <div class="article-author-meta">
+                  <picture>
+                    <source srcset="assets/images/team-elena.webp" type="image/webp">
+                    <img src="assets/images/team-elena.jpg" alt="Elena Vance" class="author-micro-avatar" width="26"
+                      height="26" loading="lazy">
+                  </picture>
+                  <span class="author-micro-name">Elena Vance</span>
+                  <span class="author-meta-dot">•</span>
+                  <span class="article-date-text">Apr 08, 2026</span>
+                </div>
+                <a href="article.html" class="article-arrow-btn" aria-label="Read full article">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M7 17L17 7M17 7H7M17 7V17" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Article Card 6 -->
+          <article class="article-card" data-cat="culture" data-cur="READ">
+            <div class="article-thumb">
+              <div class="thumb-badge-row">
+                <span class="card-cat-badge">METHODOLOGY</span>
+                <span class="card-time-badge">4 MIN READ</span>
+              </div>
+              <picture>
+                <source srcset="assets/images/team-collab.webp" type="image/webp">
+                <img src="assets/images/team-collab.jpg" alt="The Atelier Rhythm: Running 2-Week Prototype Sprints"
+                  width="800" height="500" loading="lazy" decoding="async">
+              </picture>
+            </div>
+            <div class="article-card-body">
+              <h3 class="article-title"><a href="article.html" class="title-link-clean">The Atelier Rhythm: Running
+                  2-Week Prototype Sprints</a></h3>
+              <p class="article-excerpt">Our battle-tested cadence for validating speculative design hypotheses, rapid
+                3D prototyping, and client alignment within strict two-week cycles.</p>
+              <div class="article-card-footer">
+                <div class="article-author-meta">
+                  <picture>
+                    <source srcset="assets/images/team-marcus.webp" type="image/webp">
+                    <img src="assets/images/team-marcus.jpg" alt="Marcus Chen" class="author-micro-avatar" width="26"
+                      height="26" loading="lazy">
+                  </picture>
+                  <span class="author-micro-name">Marcus Chen</span>
+                  <span class="author-meta-dot">•</span>
+                  <span class="article-date-text">Apr 02, 2026</span>
+                </div>
+                <a href="article.html" class="article-arrow-btn" aria-label="Read full article">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M7 17L17 7M17 7H7M17 7V17" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Pagination Bar (Directly beneath articles grid) -->
+        <div class="journal-pagination-wrapper">
+          <div class="pagination-meta-info">
+            <span>Showing <strong>1–6</strong> of <strong>18</strong> Dispatches</span>
+          </div>
+          <nav class="journal-pagination-nav" aria-label="Journal Page Navigation">
+            <a href="journal.html" class="pagination-num active" aria-current="page">1</a>
+            <a href="journal.html" class="pagination-num">2</a>
+            <a href="journal.html" class="pagination-num">3</a>
+            <a href="journal.html" class="pagination-num pagination-next" aria-label="Next Page">
+              <span>NEXT</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </a>
+          </nav>
+        </div>
+
+        <!-- Newsletter Subscription Plate (Below Pagination) -->
+        <div class="journal-newsletter-banner" data-cur="DISPATCH">
+          <div class="newsletter-glow-orb" aria-hidden="true"></div>
+          <div class="newsletter-content-col">
+            <div class="pill-kicker on-dark newsletter-badge">
+              <span class="badge-dot-live"></span>
+              STAY INFORMED
+            </div>
+            <h3 class="journal-newsletter-title">RECEIVE OUR UNRELEASED DISPATCHES</h3>
+            <p class="journal-newsletter-desc">
+              Subscribe to get notified whenever our studio publishes technical post-mortems, open-source motion tokens,
+              and design engineering benchmarks.
+            </p>
+            <div class="newsletter-perks">
+              <span>✓ Quarterly Digest</span>
+              <span>✓ Zero Spam</span>
+              <span>✓ Free Motion Tokens</span>
+            </div>
+          </div>
+          <div class="newsletter-action-col">
+            <form class="newsletter-form-row"
+              onsubmit="event.preventDefault(); alert('Thank you for subscribing to Kromatik Dispatches.');">
+              <label for="newsEmail" class="sr-only-input">Email Address</label>
+              <div class="newsletter-input-wrap">
+                <svg class="newsletter-mail-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect width="20" height="16" x="2" y="4" rx="2" />
+                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                </svg>
+                <input type="email" id="newsEmail" placeholder="Enter your work email address..." required
+                  class="newsletter-input">
+              </div>
+              <button type="submit" class="newsletter-submit-btn">
+                <span>SUBSCRIBE</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M7 17L17 7M17 7H7M17 7V17" />
+                </svg>
+              </button>
+            </form>
+            <p class="newsletter-fineprint">Join 8,400+ creative directors, front-end architects, and design leaders.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================================================
+       3. Footer & Colophon
+       Studio contact details, local time clocks, and copyright.
+       Editing hint: update social links, emails, and address.
+       ============================================================ -->
+  <footer class="site-footer" id="contact" data-bgcolor="#0E1610" data-textcolor="#FFFFFF">
+    <div class="container ft-inner">
+      <div class="footer-cta-box ft-cta">
+        <div class="pill-kicker on-dark">START A CONVERSATION</div>
+        <h2 class="footer-cta-h2 ft-title">
+          <span class="ft-line"><span class="ft-line-in">LET'S BUILD SOMETHING</span></span>
+          <span class="ft-line"><span class="ft-line-in">UNFORGETTABLE <em>TOGETHER</em></span></span>
+        </h2>
+        <div class="ft-btnwrap">
+          <a href="mailto:hello@kromatik.studio" class="footer-email-btn" data-cur="EMAIL">
+            <svg viewBox="0 0 24 24">
+              <path d="M7 17L17 7M17 7H7M17 7V17" />
+            </svg>
+            <span>hello@kromatik.studio</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="ft-grid">
+        <div class="ft-col">
+          <div class="ft-h">STUDIO</div><a href="index.html#about">About</a><a href="index.html#process">Process</a><a
+            href="index.html#atelier">Atelier</a><a href="index.html#testimonials">Voices</a>
+        </div>
+        <div class="ft-col">
+          <div class="ft-h">WORK</div><a href="index.html#services">Services</a><a href="index.html#works">Selected
+            Works</a><a href="index.html#accolades">Awards</a><a href="journal.html">Journal</a>
+        </div>
+        <div class="ft-col">
+          <div class="ft-h">SOCIAL</div><a href="https://instagram.com" target="_blank" rel="noopener">Instagram
+            &#8599;</a><a href="https://dribbble.com" target="_blank" rel="noopener">Dribbble &#8599;</a><a
+            href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn &#8599;</a><a href="https://behance.net"
+            target="_blank" rel="noopener">Behance &#8599;</a>
+        </div>
+        <div class="ft-col">
+          <div class="ft-h">OFFICES</div><span>Z&uuml;rich</span><span>Tokyo</span><span>New York</span>
+        </div>
+      </div>
+
+      <div class="ft-wordmark" id="ftWordmark" aria-label="Kromatik">
+        <span class="ft-char-wrap"><span class="ft-char">K</span></span>
+        <span class="ft-char-wrap"><span class="ft-char">R</span></span>
+        <span class="ft-char-wrap"><span class="ft-char">O</span></span>
+        <span class="ft-char-wrap"><span class="ft-char">M</span></span>
+        <span class="ft-char-wrap"><span class="ft-char">A</span></span>
+        <span class="ft-char-wrap"><span class="ft-char">T</span></span>
+        <span class="ft-char-wrap"><span class="ft-char">I</span></span>
+        <span class="ft-char-wrap"><span class="ft-char">K</span></span>
+      </div>
+
+      <div class="footer-bottom-strip">
+        <div class="brand-logo brand-logo-compact">Kromatik<span class="dot">.</span></div>
+        <div>&copy; 2026 Kromatik Studio. All rights reserved.</div>
+        <button class="ft-top" id="ftTop" type="button">BACK TO TOP &#8593;</button>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+
+</html>

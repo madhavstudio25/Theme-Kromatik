@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<!-- image strategy: picture+webp -->
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Digital Innovation Studio: A Haven for Creative Engineering — Kromatik</title>
+  <meta name="description"
+    content="A deep dive into how bridging software engineering and obsessive visual art creates tactile, living digital products that resonate across global juries.">
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap"
+    rel="stylesheet">
+  <link rel="preload" as="image" href="assets/images/article-hero-hd.webp" type="image/webp" fetchpriority="high">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="assets/js/vendor/gsap.min.js"></script>
+  <script src="assets/js/vendor/ScrollTrigger.min.js"></script>
+  <script src="assets/js/vendor/lenis.min.js"></script>
+</head>
+
+
+<body class="theme-light">
+  <!-- Reading Progress Bar -->
+  <div class="reading-progress-track" aria-hidden="true">
+    <div class="reading-progress-fill" id="readingProgressFill"></div>
+  </div>
+
+  <!-- Custom Cursor Follower -->
+  <div class="cux-layer" id="cux-layer" aria-hidden="true">
+    <div class="cux-dot" id="cux-dot"></div>
+    <div class="cux-ring" id="cux-ring">
+      <span class="cux-label" id="cux-label"></span>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       1. Header Navigation
+       Primary sticky navigation bar with logo, nav links and CTA.
+       Editing hint: update links and contact button destination.
+       ============================================================ -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-logo hd-brand" aria-label="Kromatik home">
+        <span class="hd-mark" aria-hidden="true"></span>
+        <span>Kromatik<span class="dot">.</span></span>
+      </a>
+
+      <nav class="nav-links" id="hdNav" aria-label="Main Navigation">
+        <span class="hd-pill" id="hdPill" aria-hidden="true"></span>
+        <a href="index.html#about" data-sec="about"><span class="rl"><span>About</span><span
+              aria-hidden="true">About</span></span></a>
+        <a href="index.html#services" data-sec="services"><span class="rl"><span>Services</span><span
+              aria-hidden="true">Services</span></span></a>
+        <a href="index.html#works" data-sec="works"><span class="rl"><span>Works</span><span
+              aria-hidden="true">Works</span></span></a>
+        <a href="index.html#accolades" data-sec="accolades"><span class="rl"><span>Awards</span><span
+              aria-hidden="true">Awards</span></span></a>
+        <a href="journal.html" class="active" aria-current="page"><span class="rl"><span>Journal</span><span
+              aria-hidden="true">Journal</span></span></a>
+        <a href="index.html#faq" data-sec="faq"><span class="rl"><span>FAQ</span><span
+              aria-hidden="true">FAQ</span></span></a>
+      </nav>
+
+      <div class="hd-right">
+        <a href="journal.html" class="header-cta-btn">
+          <span class="rl"><span>ALL ARTICLES</span><span aria-hidden="true">ALL ARTICLES</span></span>
+          <i class="hd-arrow"><svg viewBox="0 0 24 24">
+              <path d="M7 17L17 7M17 7H7M17 7V17" />
+            </svg></i>
+        </a>
+        <button class="hd-menu" id="hdMenu" type="button" aria-label="Open menu" aria-expanded="false"
+          aria-controls="menuOverlay">
+          <svg class="hd-ring" viewBox="0 0 50 50" aria-hidden="true">
+            <circle id="hdRing" cx="25" cy="25" r="24" />
+          </svg>
+          <span class="ln l1"></span><span class="ln l2"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="menu-overlay" id="menuOverlay" data-lenis-prevent role="dialog" aria-modal="true" aria-label="Site menu">
+    <div class="container mo-inner">
+      <nav class="mo-list" aria-label="Full menu">
+        <a href="index.html#hero"><span class="mo-n">01</span><span class="mo-mask"><span
+              class="mo-in">Home</span></span></a>
+        <a href="index.html#about"><span class="mo-n">02</span><span class="mo-mask"><span
+              class="mo-in">About</span></span></a>
+        <a href="index.html#process"><span class="mo-n">03</span><span class="mo-mask"><span
+              class="mo-in">Process</span></span></a>
+        <a href="index.html#services"><span class="mo-n">04</span><span class="mo-mask"><span
+              class="mo-in">Services</span></span></a>
+        <a href="index.html#works"><span class="mo-n">05</span><span class="mo-mask"><span
+              class="mo-in">Works</span></span></a>
+        <a href="index.html#capabilities"><span class="mo-n">06</span><span class="mo-mask"><span
+              class="mo-in">Capabilities</span></span></a>
+        <a href="index.html#accolades"><span class="mo-n">07</span><span class="mo-mask"><span
+              class="mo-in">Awards</span></span></a>
+        <a href="index.html#atelier"><span class="mo-n">08</span><span class="mo-mask"><span
+              class="mo-in">Atelier</span></span></a>
+        <a href="index.html#testimonials"><span class="mo-n">09</span><span class="mo-mask"><span
+              class="mo-in">Voices</span></span></a>
+        <a href="journal.html"><span class="mo-n">10</span><span class="mo-mask"><span
+              class="mo-in">Journal</span></span></a>
+        <a href="index.html#faq"><span class="mo-n">11</span><span class="mo-mask"><span
+              class="mo-in">FAQ</span></span></a>
+        <a href="index.html#planner"><span class="mo-n">12</span><span class="mo-mask"><span
+              class="mo-in">Plan</span></span></a>
+        <a href="index.html#contact"><span class="mo-n">13</span><span class="mo-mask"><span
+              class="mo-in">Contact</span></span></a>
+      </nav>
+      <div class="mo-meta">
+        <div class="mo-fade mo-lbl">AUDIO ATMOSPHERE</div>
+        <button class="mo-fade mo-sound-btn" id="menuSoundToggle" type="button" aria-label="Toggle Sound">
+          <span id="menuSoundIcon">🔊</span>
+          <span id="menuSoundLabel">SOUND: ON</span>
+          <span class="mo-sound-switch"><span class="mo-sound-knob"></span></span>
+        </button>
+        <div class="mo-fade mo-lbl">GET IN TOUCH</div>
+        <a class="mo-fade mo-mail" href="mailto:hello@kromatik.studio">hello@kromatik.studio</a>
+        <div class="mo-fade mo-lbl">ELSEWHERE</div>
+        <div class="mo-fade mo-soc"><a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a><a
+            href="https://dribbble.com" target="_blank" rel="noopener">Dribbble</a><a href="https://linkedin.com"
+            target="_blank" rel="noopener">LinkedIn</a></div>
+        <div class="mo-fade mo-lbl">Z&Uuml;RICH &middot; TOKYO &middot; NEW YORK</div>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <!-- ============================================================
+         2. Editorial Article Deep-Dive Showcase
+         Header metadata, large photography, sticky sidebar & body.
+         Editing hint: replace article text, pullquotes, and author.
+         ============================================================ -->
+    <article class="article-single-section" data-bgcolor="#F6F4ED" data-textcolor="#141714">
+      <div class="container">
+        <!-- Breadcrumbs -->
+        <nav class="article-breadcrumb-nav" aria-label="Breadcrumb">
+          <a href="index.html">Atelier</a>
+          <span>/</span>
+          <a href="journal.html">Journal</a>
+          <span>/</span>
+          <span>Creative Engineering</span>
+        </nav>
+
+        <header class="article-single-header">
+          <div class="article-header-meta">
+
+            <span class="article-kicker-tag">DETERMINISTIC INTERACTION SYSTEMS</span>
+          </div>
+          <h1 class="article-single-h1">ENGINEERING FLUIDITY: HOW WE BUILD DETERMINISTIC INTERACTION SYSTEMS</h1>
+          <p class="article-lead-p">
+            A technical breakdown of how our studio bridges spring kinematics, procedural Web Audio haptics, and
+            sub-millisecond DOM render loops to craft tactile web interfaces that feel physical.
+          </p>
+          <div class="journal-author-row">
+            <picture>
+              <source srcset="assets/images/team-elena.webp" type="image/webp">
+              <img src="assets/images/team-elena.jpg" alt="Elena Vance" width="48" height="48" class="author-avatar-img"
+                fetchpriority="high" decoding="async">
+            </picture>
+            <div>
+              <div class="author-name-text">Elena Vance <span class="author-co-writer">with Marcus Chen</span></div>
+              <div class="author-role-text">Design Director &amp; Head of Creative Tech • May 2, 2026 • 6 Min Read</div>
+            </div>
+          </div>
+        </header>
+
+        <!-- Grand Cinematic Hero Media Plate -->
+        <figure class="article-single-hero-plate">
+          <div class="hero-plate-hud-top">
+            <span class="hud-tag"><span class="badge-dot-live"></span> LIVE PROTOTYPE LAB</span>
+            <span class="hud-coords">47°22'N 8°32'E // ZÜRICH ATELIER</span>
+          </div>
+          <picture>
+            <source srcset="assets/images/article-hero-hd.webp" type="image/webp">
+            <img src="assets/images/article-hero-hd.jpg" alt="Creative engineering atelier workspace" width="1600"
+              height="760" fetchpriority="high" decoding="async">
+          </picture>
+          <div class="hero-plate-hud-bottom">
+            <span class="hud-tag">FIG 1.0 — 120 FPS KINETIC CALIBRATION</span>
+            <span class="hud-badge">GPU RENDER ACCELERATED</span>
+          </div>
+        </figure>
+        <p class="media-caption-text">Fig 1.0 — Inside the Kromatik Atelier kinetic prototyping laboratory, Zürich.</p>
+
+        <!-- Editorial Two-Column Layout -->
+        <div class="article-editorial-grid">
+          <!-- Sticky Table of Contents & Dispatch Status -->
+          <aside class="article-sticky-sidebar">
+            <!-- Dispatch Pulse Meta -->
+            <div class="sidebar-widget-box">
+              <div class="sidebar-widget-title">
+                <span>DISPATCH PULSE</span>
+                <span class="widget-badge">LIVE #042</span>
+              </div>
+              <div class="sidebar-stat-row">
+                <span>Reading Time</span>
+                <span class="sidebar-stat-pill">6 Min Read</span>
+              </div>
+              <div class="sidebar-stat-row">
+                <span>Curated By</span>
+                <span class="sidebar-stat-val">Elena Vance</span>
+              </div>
+              <div class="sidebar-progress-wrap">
+                <svg class="sidebar-progress-ring" viewBox="0 0 44 44" aria-hidden="true">
+                  <circle cx="22" cy="22" r="18" class="ring-bg"></circle>
+                  <circle cx="22" cy="22" r="18" class="ring-fill" id="sidebarProgressFill"></circle>
+                </svg>
+                <div>
+                  <div class="sidebar-progress-text" id="sidebarProgressPercent">0% READ</div>
+                  <div class="sidebar-post-meta">SCROLL PROGRESS</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Table of Contents (ScrollSpy Synchronized) -->
+            <div class="sidebar-widget-box">
+              <div class="sidebar-widget-title">
+                <span>IN THIS ESSAY</span>
+                <span class="widget-badge">4 TOPICS</span>
+              </div>
+              <ul class="sidebar-toc-list">
+                <li><a href="#static-handoffs" class="is-active">1. The Fallacy of Static Handoffs</a></li>
+                <li><a href="#physics-tokens">2. Deterministic Physics Tokens</a></li>
+                <li><a href="#procedural-haptics">3. Real-Time Web Audio Haptics</a></li>
+                <li><a href="#frame-budget">4. The 120 FPS Frame Budget</a></li>
+              </ul>
+            </div>
+
+
+            <!-- Curated Topic Tags -->
+            <div class="sidebar-widget-box">
+              <div class="sidebar-widget-title">
+                <span>CURATED TAGS</span>
+              </div>
+              <div class="sidebar-tags-wrap">
+                <a href="journal.html" class="sidebar-tag-pill">#CreativeEngineering</a>
+                <a href="journal.html" class="sidebar-tag-pill">#PhysicsTokens</a>
+                <a href="journal.html" class="sidebar-tag-pill">#WebAudio</a>
+                <a href="journal.html" class="sidebar-tag-pill">#120FPS</a>
+              </div>
+            </div>
+          </aside>
+
+          <!-- Main Article Body Content Column -->
+          <div class="article-body-content">
+            <p class="article-intro-p">
+              In a digital landscape flooded with homogenized component libraries and sterile automated boilerplate,
+              distinct human craft has become the ultimate luxury. For the past decade, web engineering operated under
+              the assumption that software was merely an information retrieval system. We built functional machines, but
+              we stripped away delight, weight, tactile friction, and soul.
+            </p>
+
+            <h2 id="static-handoffs">1. The Fallacy of Static Figma Handoffs</h2>
+            <p>
+              Users do not experience design systems as static Figma artboards; they experience resonance. When an
+              interface moves with authentic physical inertia, when typography responds magnetically to cursor velocity,
+              and when state transitions scrub seamlessly under the fingertip, the digital medium transcends its flat
+              glass boundaries.
+            </p>
+            <p>
+              The industry's legacy handoff workflow—where a visual designer exports static PNGs and types <code
+                class="inline-code">transition: all 0.3s ease</code> into a specification document—is fundamentally
+              incapable of producing high-end digital craft. Spatial computing, WebGL shaders, and non-linear spring
+              mechanics cannot be captured in static mockups. They must be programmed, tested across high-refresh
+              touchscreens, and calibrated directly within the browser runtime.
+            </p>
+
+            <!-- Pull Quote Highlight -->
+            <blockquote class="editorial-pullquote">
+              <div class="pullquote-text">
+                “When an engineer thinks in damping ratios and a designer thinks in render loops, digital products stop
+                feeling like simulated glass and begin feeling like physical instruments.”
+              </div>
+              <div class="pullquote-caption">— Elena Vance, Kromatik Atelier Director</div>
+            </blockquote>
+
+            <p>
+              A true digital atelier approaches every web product as a bespoke architectural commission. It requires
+              treating interaction tokens—spring stiffness, damping ratios, sound frequencies, and GPU composite
+              layers—with the same rigorous attention that an architect grants to stone, timber, and daylight.
+            </p>
+
+            <h2 id="physics-tokens">2. Deterministic Physics Tokens</h2>
+            <p>
+              Consider how physical materials telegraph quality. A solid brass door handle conveys permanence and
+              craftsmanship before you ever step through an entrance; a weighted aluminum dial on an analog amplifier
+              telegraphs acoustic precision. On the web, motion curves perform the exact same psychological function.
+            </p>
+            <p>
+              In Kromatik, interaction physics are standardized into deterministic formulas rather than arbitrary CSS
+              timing keywords. Instead of a linear duration that breaks when interrupted, interface elements accelerate
+              and settle using under-damped spring equations governed by real-world physical constants:
+            </p>
+
+            <!-- Interactive Spring Physics Sandbox -->
+            <div class="interactive-physics-sandbox" id="springSandbox">
+              <div class="sandbox-header">
+                <div class="sandbox-title-wrap">
+                  <span class="sandbox-icon">⚡</span>
+                  <div>
+                    <div class="sandbox-title">KROMATIK ATELIER INTERACTION ENGINE v2.6</div>
+                    <div class="sandbox-subtitle">REAL-TIME DETERMINISTIC SPRING PHYSICS SIMULATOR</div>
+                  </div>
+                </div>
+                <div class="sandbox-live-pill"><span class="pulse-indicator-dot"></span> 120 FPS WEBGL / DOM</div>
+              </div>
+              <div class="sandbox-viewport">
+                <div class="spring-visualizer-track">
+                  <div class="spring-interactive-orb" id="springOrb" title="Click or tap to trigger spring impulse">
+                    <span class="spring-orb-symbol">✦</span>
+                    <span class="spring-orb-pulse"></span>
+                  </div>
+                </div>
+                <div class="sandbox-telemetry-grid">
+                  <div class="telemetry-card">
+                    <span class="tel-lbl">STIFFNESS (K)</span>
+                    <span class="tel-val" id="telStiffness">280 N/m</span>
+                  </div>
+                  <div class="telemetry-card">
+                    <span class="tel-lbl">DAMPING (C)</span>
+                    <span class="tel-val" id="telDamping">24.0 Ns/m</span>
+                  </div>
+                  <div class="telemetry-card">
+                    <span class="tel-lbl">MASS (M)</span>
+                    <span class="tel-val" id="telMass">0.82 kg</span>
+                  </div>
+                  <div class="telemetry-card">
+                    <span class="tel-lbl">RESTITUTION</span>
+                    <span class="tel-val" id="telRestitution">0.02 ε</span>
+                  </div>
+                </div>
+              </div>
+              <div class="sandbox-footer">
+                <button type="button" class="btn-sandbox-trigger" id="triggerSpringBtn">
+                  <span>TEST SPRING IMPULSE</span>
+                  <span class="sandbox-btn-arrow">⚡</span>
+                </button>
+                <span class="sandbox-hint">CLICK BUTTON OR ORB TO TEST NATURAL INERTIA &amp; SETTLE TIME</span>
+              </div>
+            </div>
+
+            <p>
+              Because spring kinematics preserve momentum, an interactive element can be interrupted mid-flight without
+              snapping or causing jarring layout shifts. If a user swipes a drawer closed while it is still opening, the
+              engine seamlessly absorbs the residual velocity and reverses course naturally.
+            </p>
+
+            <!-- Inline Architecture Figure -->
+            <figure class="editorial-inline-figure">
+              <picture>
+                <source srcset="assets/images/studio-meeting.webp" type="image/webp">
+                <img src="assets/images/studio-meeting.jpg" alt="Design engineering pairing meeting" width="1200"
+                  height="700" loading="lazy" decoding="async">
+              </picture>
+              <figcaption>Fig 2.0 — Motion calibration across ProMotion 120Hz displays in the Zürich studio.
+              </figcaption>
+            </figure>
+
+            <h2 id="procedural-haptics">3. Real-Time Web Audio Haptics</h2>
+            <p>
+              Sight is only half of the perceptual equation. In physical reality, every mechanical interaction—pressing
+              a Leica shutter button, sliding a heavy oak drawer—provides instant auditory confirmation. On the web,
+              sound has historically been avoided because clumsy background music and slow-loading MP3 files damaged the
+              user experience.
+            </p>
+            <p>
+              We bypass static audio assets entirely by synthesizing micro-haptics procedurally in real time using the
+              native browser Web Audio API. By modulating a short 432Hz sine burst through an exponential decay gain
+              node, we generate a crisp, velvety tactile click that costs exactly zero bytes of network bandwidth:
+            </p>
+
+            <!-- Interactive Audio Synthesizer Lab -->
+            <div class="interactive-sound-lab" id="soundLab">
+              <div class="sound-lab-left">
+                <div class="sound-lab-badge">WEB AUDIO API SYNTHESIZER</div>
+                <div class="sound-lab-title">TACTILE HAPTIC CHIME // 432Hz HARMONIC ENGINE</div>
+                <p class="sound-lab-desc">Our studio synthesizes procedural audio in real time using native oscillator
+                  nodes, bypassing bloated static audio file downloads.</p>
+              </div>
+              <div class="sound-lab-right">
+                <div class="sound-visual-bars" id="soundVisualBars">
+                  <span class="sb-bar"></span>
+                  <span class="sb-bar"></span>
+                  <span class="sb-bar"></span>
+                  <span class="sb-bar"></span>
+                  <span class="sb-bar"></span>
+                  <span class="sb-bar"></span>
+                  <span class="sb-bar"></span>
+                  <span class="sb-bar"></span>
+                </div>
+                <button type="button" class="btn-sound-lab" id="btnTestSoundLab"
+                  aria-label="Synthesize 432Hz haptic audio frequency">
+                  <svg class="sound-btn-svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"
+                    aria-hidden="true">
+                    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                    <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                    <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+                  </svg>
+
+                </button>
+              </div>
+            </div>
+
+            <p>
+              The result is an acoustic signature that feels integral to the physical chassis of the hardware itself.
+              The feedback is subtle, unobtrusive, and respects user preferences and mute state instantaneously.
+            </p>
+
+            <h2 id="frame-budget">4. The 120 FPS Frame Budget</h2>
+            <p>
+              Museum-grade aesthetic craft cannot come at the expense of runtime performance. On modern ProMotion and
+              120Hz displays, the compositor thread has an unforgiving budget of just 8.33 milliseconds per frame. Any
+              synchronous DOM layout calculation, un-promoted transform, or unoptimized image decode will cause
+              micro-stuttering that shatters the illusion of reality.
+            </p>
+            <p>
+              To maintain rock-solid 120 FPS performance across desktop and mobile devices, we enforce four core
+              architectural rules across our production codebases:
+            </p>
+
+            <!-- Dark Code Showcase -->
+            <div class="editorial-code-showcase">
+              <div class="code-showcase-header">
+                <div class="code-mac-dots">
+                  <span class="cdot red"></span>
+                  <span class="cdot yellow"></span>
+                  <span class="cdot green"></span>
+                </div>
+                <span class="code-file-title">KromatikTokens.ts — Production Spring &amp; Render Tokens</span>
+                <button type="button" class="code-copy-btn" id="codeCopyBtn">COPY CODE</button>
+              </div>
+              <pre class="code-pre"><code><span class="c-k">export const</span> <span class="c-v">KromatikKineticTokens</span> = {
+  <span class="c-p">tension</span>: <span class="c-n">280</span>,       <span class="c-c">// Instantaneous displacement response</span>
+  <span class="c-p">friction</span>: <span class="c-n">24</span>,       <span class="c-c">// Critical damping ratio preventing overshoot</span>
+  <span class="c-p">mass</span>: <span class="c-n">0.82</span>,         <span class="c-c">// Tactile inertia resistance in kg</span>
+  <span class="c-p">willChange</span>: <span class="c-s">"transform"</span>,
+  <span class="c-p">transformTemplate</span>: <span class="c-s">"translate3d(0, y, 0)"</span>,
+  <span class="c-p">hapticAudio</span>: <span class="c-k">true</span>   <span class="c-c">// Real-time 432Hz synthesizer trigger</span>
+};</code></pre>
+            </div>
+
+            <!-- Key Architectural Takeaways Box -->
+            <div class="key-takeaways-box">
+              <div class="takeaways-title">ARCHITECTURAL MANIFESTO SUMMARY</div>
+              <ul class="takeaways-list">
+                <li>Zero Layout Shift (CLS &lt; 0.01) via explicit container aspect ratios and modern WebP picture
+                  sources.</li>
+                <li>Compositor-only animations utilizing hardware-accelerated 3D transforms to avoid DOM repaints.</li>
+                <li>Zero-byte procedural audio via Web Audio API oscillators, replacing static MP3 network requests.
+                </li>
+                <li>Lenis smooth momentum scrolling synchronized with GSAP ScrollTrigger timeline interpolation.</li>
+              </ul>
+            </div>
+
+            <!-- Reader Reaction & Appreciation Bar -->
+            <div class="article-reaction-bar">
+              <div class="reaction-left">
+                <button type="button" class="article-clap-btn" id="articleClapBtn" aria-label="Applaud this dispatch">
+                  <span class="clap-icon">✦</span>
+                  <span class="clap-label">APPRECIATE ESSAY</span>
+                  <span class="clap-badge" id="clapCount">348</span>
+                </button>
+                <span class="clap-feedback" id="clapFeedback">THANK YOU FOR READING!</span>
+              </div>
+              <div class="reaction-right">
+                <span class="reaction-share-lbl">SHARE:</span>
+                <a href="https://twitter.com" target="_blank" rel="noopener" class="reaction-share-pill">X ↗</a>
+                <a href="https://linkedin.com" target="_blank" rel="noopener" class="reaction-share-pill">LINKEDIN ↗</a>
+                <button type="button" class="reaction-share-pill" id="reactionCopyBtn">COPY 🔗</button>
+              </div>
+            </div>
+
+            <!-- Author Bio Card -->
+            <div class="article-author-bio-card">
+              <picture>
+                <source srcset="assets/images/team-elena.webp" type="image/webp">
+                <img src="assets/images/team-elena.jpg" alt="Elena Vance" width="96" height="96"
+                  class="author-bio-avatar" loading="lazy" decoding="async">
+              </picture>
+              <div>
+                <div class="author-bio-name">Elena Vance</div>
+                <div class="author-bio-role">Partner &amp; Design Director at Kromatik Atelier</div>
+                <p class="author-bio-desc">
+                  Elena oversees visual architecture and spatial interaction systems. Former jury member at Awwwards and
+                  FWA, passionate about generative design engineering, typography, and tactile digital products.
+                </p>
+              </div>
+            </div>
+
+            <!-- Adjacent Story Navigation -->
+            <nav class="adjacent-story-nav" aria-label="Adjacent Articles">
+              <a href="journal.html" class="adjacent-nav-item">
+                <span class="adjacent-label">← PREVIOUS DISPATCH</span>
+                <span class="adjacent-title">Communication Between Cross-Disciplinary Departments</span>
+              </a>
+              <a href="journal.html" class="adjacent-nav-item next">
+                <span class="adjacent-label">NEXT DISPATCH →</span>
+                <span class="adjacent-title">Autonomous Neural Ecosystems: Generative Brand Identities</span>
+              </a>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ============================================================
+         3. Curated Related Dispatches (Full Width Section)
+         Curated archive highlights spanning the full container width.
+         ============================================================ -->
+    <section class="related-dispatches-section" data-bgcolor="#F6F4ED" data-textcolor="#141714">
+      <div class="container">
+        <div class="related-header">
+          <div>
+            <div class="pill-kicker on-light"><span class="badge-dot-live"></span> CURATED FROM THE ARCHIVE</div>
+            <h3 class="related-title">CONTINUE READING FROM THE ATELIER</h3>
+          </div>
+          <a href="journal.html" class="related-all-link">EXPLORE ALL 18 DISPATCHES ↗</a>
+        </div>
+        <div class="related-grid">
+          <!-- Card 1 -->
+          <article class="related-card" data-cur="READ">
+            <a href="article.html" class="related-card-link">
+              <div class="related-thumb-wrap">
+                <span class="related-cat-tag">COLLABORATION</span>
+                <picture>
+                  <source srcset="assets/images/blog-2.webp" type="image/webp">
+                  <img src="assets/images/blog-2.jpg" alt="Communication Between Departments" loading="lazy">
+                </picture>
+              </div>
+              <div class="related-card-body">
+                <div class="related-meta">APRIL 28, 2026 • 5 MIN READ</div>
+                <h4 class="related-card-title">Communication Between Cross-Disciplinary Departments</h4>
+                <p class="related-card-excerpt">How we dismantle friction between engineering, motion design, and brand
+                  architecture.</p>
+                <span class="related-read-action">READ DISPATCH ↗</span>
+              </div>
+            </a>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="related-card" data-cur="READ">
+            <a href="article.html" class="related-card-link">
+              <div class="related-thumb-wrap">
+                <span class="related-cat-tag">TOOLING</span>
+                <picture>
+                  <source srcset="assets/images/blog-3.webp" type="image/webp">
+                  <img src="assets/images/blog-3.jpg" alt="Best Prototyping Tools" loading="lazy">
+                </picture>
+              </div>
+              <div class="related-card-body">
+                <div class="related-meta">APRIL 24, 2026 • 7 MIN READ</div>
+                <h4 class="related-card-title">Best Prototyping &amp; Interaction Tools for Modern Designers</h4>
+                <p class="related-card-excerpt">A critical breakdown of procedural shaders and component token
+                  generators.</p>
+                <span class="related-read-action">READ DISPATCH ↗</span>
+              </div>
+            </a>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="related-card" data-cur="READ">
+            <a href="article.html" class="related-card-link">
+              <div class="related-thumb-wrap">
+                <span class="related-cat-tag">SPATIAL UI</span>
+                <picture>
+                  <source srcset="assets/images/commission-1.webp" type="image/webp">
+                  <img src="assets/images/commission-1.jpg" alt="Fluid Motion Architecture" loading="lazy">
+                </picture>
+              </div>
+              <div class="related-card-body">
+                <div class="related-meta">APRIL 18, 2026 • 6 MIN READ</div>
+                <h4 class="related-card-title">The Physics of Fluid Motion in Modern Web Architectures</h4>
+                <p class="related-card-excerpt">Deconstructing momentum preservation, spring mechanics, and 120 FPS
+                  render loops.</p>
+                <span class="related-read-action">READ DISPATCH ↗</span>
+              </div>
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================================================
+       4. Footer & Colophon
+       Studio contact details, local time clocks, and copyright.
+       Editing hint: update social links, emails, and address.
+       ============================================================ -->
+  <footer class="site-footer" id="contact" data-bgcolor="#0E1610" data-textcolor="#FFFFFF">
+    <div class="container ft-inner">
+      <div class="footer-cta-box ft-cta">
+        <div class="pill-kicker on-dark">START A CONVERSATION</div>
+        <h2 class="footer-cta-h2 ft-title">
+          <span class="ft-line"><span class="ft-line-in">LET'S BUILD SOMETHING</span></span>
+          <span class="ft-line"><span class="ft-line-in">UNFORGETTABLE <em>TOGETHER</em></span></span>
+        </h2>
+        <div class="ft-btnwrap">
+          <a href="mailto:hello@kromatik.studio" class="footer-email-btn" data-cur="EMAIL">
+            <svg viewBox="0 0 24 24">
+              <path d="M7 17L17 7M17 7H7M17 7V17" />
+            </svg>
+            <span>hello@kromatik.studio</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="ft-grid">
+        <div class="ft-col">
+          <div class="ft-h">STUDIO</div><a href="index.html#about">About</a><a href="index.html#process">Process</a><a
+            href="index.html#atelier">Atelier</a><a href="index.html#testimonials">Voices</a>
+        </div>
+        <div class="ft-col">
+          <div class="ft-h">WORK</div><a href="index.html#services">Services</a><a href="index.html#works">Selected
+            Works</a><a href="index.html#accolades">Awards</a><a href="journal.html">Journal</a>
+        </div>
+        <div class="ft-col">
+          <div class="ft-h">SOCIAL</div><a href="https://instagram.com" target="_blank" rel="noopener">Instagram
+            &#8599;</a><a href="https://dribbble.com" target="_blank" rel="noopener">Dribbble &#8599;</a><a
+            href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn &#8599;</a><a href="https://behance.net"
+            target="_blank" rel="noopener">Behance &#8599;</a>
+        </div>
+        <div class="ft-col">
+          <div class="ft-h">OFFICES</div><span>Z&uuml;rich</span><span>Tokyo</span><span>New York</span>
+        </div>
+      </div>
+
+      <div class="ft-wordmark" id="ftWordmark" aria-label="Kromatik">
+        <span class="ft-char-wrap"><span class="ft-char">K</span></span>
+        <span class="ft-char-wrap"><span class="ft-char">R</span></span>
+        <span class="ft-char-wrap"><span class="ft-char">O</span></span>
+        <span class="ft-char-wrap"><span class="ft-char">M</span></span>
+        <span class="ft-char-wrap"><span class="ft-char">A</span></span>
+        <span class="ft-char-wrap"><span class="ft-char">T</span></span>
+        <span class="ft-char-wrap"><span class="ft-char">I</span></span>
+        <span class="ft-char-wrap"><span class="ft-char">K</span></span>
+      </div>
+
+      <div class="footer-bottom-strip">
+        <div class="brand-logo brand-logo-compact">Kromatik<span class="dot">.</span></div>
+        <div>&copy; 2026 Kromatik Studio. All rights reserved.</div>
+        <button class="ft-top" id="ftTop" type="button">BACK TO TOP &#8593;</button>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+
+</html>

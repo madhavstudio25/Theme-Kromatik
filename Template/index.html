@@ -1,0 +1,1550 @@
+<!-- image strategy: picture+webp -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#142016" id="theme-color-meta">
+  <title>Kromatik. — The Digital Innovation Studio</title>
+  <meta name="description"
+    content="The Digital Innovation Studio, where creativity meets technology to craft award-winning digital experiences.">
+
+  <!-- Google Fonts: Space Grotesk (Condensed/Display) & Inter (Body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Local Vendor Libraries (Offline Ready) -->
+  <script src="assets/js/vendor/gsap.min.js"></script>
+  <script src="assets/js/vendor/ScrollTrigger.min.js"></script>
+  <script src="assets/js/vendor/lenis.min.js"></script>
+
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <link rel="preload" as="image" href="assets/images/team-hero.webp" type="image/webp" fetchpriority="high">
+</head>
+
+<body class="theme-dark">
+  <div class="fx-bg-layer" id="fxBgLayer" aria-hidden="true"></div>
+
+  <!-- Global GSAP Scroll Progress Line -->
+  <div class="scroll-progress-line" id="scrollProgressLine"></div>
+
+  <!-- Click Burst Canvas -->
+  <canvas class="burst-canvas" id="burstCanvas" aria-hidden="true"></canvas>
+
+  <!-- ========================================================================
+       CURSOR: Follower & Ring (cursors/follower - mountFollow)
+       ======================================================================== -->
+  <!-- Custom Cursor Follower Layer (Precision Awwwards Kinetic Cursor) -->
+  <div class="cux-layer" id="cux-layer" aria-hidden="true">
+    <div class="cux-dot" id="cux-dot"></div>
+    <div class="cux-ring" id="cux-ring">
+      <span id="cux-label">DISCOVER</span>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       HEADER / NAV (Reference UI: Logo Left, Center Links, Right CTA)
+       ======================================================================== -->
+  <!-- ============================================================
+     1. Header Navigation
+     Primary sticky navigation bar with logo, nav links and CTA.
+     Editing hint: update links and contact button destination.
+     ============================================================ -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a href="#hero" class="brand-logo hd-brand" aria-label="Kromatik home">
+        <span class="hd-mark" aria-hidden="true"></span>
+        <span>Kromatik<span class="dot">.</span></span>
+      </a>
+
+      <nav class="nav-links" id="hdNav" aria-label="Main Navigation">
+        <span class="hd-pill" id="hdPill" aria-hidden="true"></span>
+        <a href="#about" data-sec="about"><span class="rl"><span>About</span><span
+              aria-hidden="true">About</span></span></a>
+        <a href="#services" data-sec="services"><span class="rl"><span>Services</span><span
+              aria-hidden="true">Services</span></span></a>
+        <a href="#works" data-sec="works"><span class="rl"><span>Works</span><span
+              aria-hidden="true">Works</span></span></a>
+        <a href="#accolades" data-sec="accolades"><span class="rl"><span>Awards</span><span
+              aria-hidden="true">Awards</span></span></a>
+        <a href="journal.html"><span class="rl"><span>Journal</span><span aria-hidden="true">Journal</span></span></a>
+        <a href="#faq" data-sec="faq"><span class="rl"><span>FAQ</span><span aria-hidden="true">FAQ</span></span></a>
+      </nav>
+
+      <div class="hd-right">
+        <a href="#contact" class="header-cta-btn">
+          <span class="rl"><span>LET'S TALK</span><span aria-hidden="true">LET'S TALK</span></span>
+          <i class="hd-arrow"><svg viewBox="0 0 24 24">
+              <path d="M7 17L17 7M17 7H7M17 7V17" />
+            </svg></i>
+        </a>
+        <button class="hd-menu" id="hdMenu" type="button" aria-label="Open menu" aria-expanded="false"
+          aria-controls="menuOverlay">
+          <svg class="hd-ring" viewBox="0 0 50 50" aria-hidden="true">
+            <circle id="hdRing" cx="25" cy="25" r="24" />
+          </svg>
+          <span class="ln l1"></span><span class="ln l2"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="menu-overlay" id="menuOverlay" data-lenis-prevent role="dialog" aria-modal="true" aria-label="Site menu">
+    <div class="container mo-inner">
+      <nav class="mo-list" aria-label="Full menu">
+        <a href="#hero"><span class="mo-n">01</span><span class="mo-mask"><span class="mo-in">Home</span></span></a>
+        <a href="#about"><span class="mo-n">02</span><span class="mo-mask"><span class="mo-in">About</span></span></a>
+        <a href="#process"><span class="mo-n">03</span><span class="mo-mask"><span
+              class="mo-in">Process</span></span></a>
+        <a href="#services"><span class="mo-n">04</span><span class="mo-mask"><span
+              class="mo-in">Services</span></span></a>
+        <a href="#works"><span class="mo-n">05</span><span class="mo-mask"><span class="mo-in">Works</span></span></a>
+        <a href="#capabilities"><span class="mo-n">06</span><span class="mo-mask"><span
+              class="mo-in">Capabilities</span></span></a>
+        <a href="#accolades"><span class="mo-n">07</span><span class="mo-mask"><span
+              class="mo-in">Awards</span></span></a>
+        <a href="#atelier"><span class="mo-n">08</span><span class="mo-mask"><span
+              class="mo-in">Atelier</span></span></a>
+        <a href="#testimonials"><span class="mo-n">09</span><span class="mo-mask"><span
+              class="mo-in">Voices</span></span></a>
+        <a href="journal.html"><span class="mo-n">10</span><span class="mo-mask"><span
+              class="mo-in">Journal</span></span></a>
+        <a href="#faq"><span class="mo-n">11</span><span class="mo-mask"><span class="mo-in">FAQ</span></span></a>
+        <a href="#planner"><span class="mo-n">12</span><span class="mo-mask"><span class="mo-in">Plan</span></span></a>
+        <a href="#contact"><span class="mo-n">13</span><span class="mo-mask"><span
+              class="mo-in">Contact</span></span></a>
+      </nav>
+      <div class="mo-meta">
+        <div class="mo-fade mo-lbl">AUDIO ATMOSPHERE</div>
+        <button class="mo-fade mo-sound-btn is-muted" id="menuSoundToggle" type="button" aria-label="Toggle Sound">
+          <span id="menuSoundIcon">🔈</span>
+          <span id="menuSoundLabel">SOUND: OFF</span>
+          <span class="mo-sound-switch"><span class="mo-sound-knob"></span></span>
+        </button>
+        <div class="mo-fade mo-lbl">GET IN TOUCH</div>
+        <a class="mo-fade mo-mail" href="mailto:hello@kromatik.studio">hello@kromatik.studio</a>
+        <div class="mo-fade mo-lbl">ELSEWHERE</div>
+        <div class="mo-fade mo-soc"><a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a><a
+            href="https://dribbble.com" target="_blank" rel="noopener">Dribbble</a><a href="https://linkedin.com"
+            target="_blank" rel="noopener">LinkedIn</a></div>
+        <div class="mo-fade mo-lbl">Z&Uuml;RICH &middot; TOKYO &middot; NEW YORK</div>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <!-- ======================================================================
+         SECTION 1: HERO (Headline Left + Floating Yellow Card + Wide Image)
+         ====================================================================== -->
+    <!-- ============================================================
+     2. Hero Section
+     High-impact kinetic typography, stats goal card & team photo.
+     Editing hint: customize heading text and goal card metrics.
+     ============================================================ -->
+    <section class="hero-section" id="hero" data-bgcolor="#142016" data-textcolor="#FFFFFF">
+      <!-- Interactive Dot Field Canvas -->
+      <canvas class="hero-dotfield-canvas" id="heroDotField" aria-hidden="true"></canvas>
+
+      <div class="container">
+        <div class="hero-top-grid">
+          <div class="hero-headline-col" data-speed="0.2">
+            <h1 class="hero-h1" id="hero-heading"
+              aria-label="Independent Design & Technology Studio. Crafting tactile digital platforms for ambitious brands.">
+              Independent Design &amp; Technology Studio. Crafting tactile digital platforms for ambitious brands.
+            </h1>
+          </div>
+
+          <!-- Floating Acid Yellow Goal Card -->
+          <div class="hero-card-col" data-speed="0.12">
+            <div class="hero-goal-card" id="hero-goal-card">
+              <div class="goal-card-header">
+                <div class="goal-kicker">STUDIO HIGHLIGHTS</div>
+                <div class="goal-sub">Independent digital atelier</div>
+              </div>
+
+              <div class="goal-divider"></div>
+
+              <div class="goal-stats-grid">
+                <div class="goal-stat-row">
+                  <div>
+                    <div class="goal-num" data-to="120" data-suf="+">120+</div>
+                    <div class="goal-label">Digital Releases</div>
+                  </div>
+                  <svg class="goal-arrow" viewBox="0 0 24 24">
+                    <path d="M7 17L17 7M17 7H7M17 7V17" />
+                  </svg>
+                </div>
+
+                <div class="goal-divider goal-stat-divider"></div>
+
+                <div class="goal-stat-row">
+                  <div>
+                    <div class="goal-num" data-to="14" data-suf="">14</div>
+                    <div class="goal-label">Industry Honors</div>
+                  </div>
+                  <svg class="goal-arrow" viewBox="0 0 24 24">
+                    <path d="M7 17L17 7M17 7H7M17 7V17" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom Half: Wide Team Studio Photography Plate with Circular Rotating Seal -->
+        <div class="hero-photo-banner-wrapper">
+          <div class="hero-photo-banner">
+            <picture>
+              <source srcset="assets/images/team-hero.webp" type="image/webp">
+              <img src="assets/images/team-hero.jpg" alt="Editorial Black and White Creative Agency Team Portrait"
+                width="1600" height="900" fetchpriority="high" decoding="async">
+            </picture>
+          </div>
+
+          <!-- Rotating Circular Seal Badge -->
+          <div class="circular-seal-badge" id="circularSeal" data-cur="SPIN">
+            <svg class="circular-seal-svg" viewBox="0 0 200 200" aria-hidden="true">
+              <path id="sealPath" d="M100,100 m-70,0 a70,70 0 1,1 140,0 a70,70 0 1,1 -140,0" fill="none" />
+              <text class="circular-seal-text">
+                <textPath href="#sealPath" startOffset="0%">
+                  KROMATIK DIGITAL ATELIER • CREATIVITY MEETS TECH • 2026 •
+                </textPath>
+              </text>
+            </svg>
+            <div class="circular-seal-center">✦</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SECTION 2: VELOCITY MARQUEE (scroll/velocity - mountMarquee)
+         ====================================================================== -->
+    <div class="marquee-strip" id="marquee-strip">
+      <div class="marquee-track" id="marquee-track">
+        <div class="marquee-group">
+          <div class="marquee-item"><span class="sym">✦</span> AETHER HOROLOGY</div>
+          <div class="marquee-item"><span class="sym">❖</span> NEXUS COGNITIVE AI</div>
+          <div class="marquee-item"><span class="sym">✦</span> VOLT ACOUSTICS</div>
+          <div class="marquee-item"><span class="sym">❖</span> BIENNALE ZÜRICH</div>
+          <div class="marquee-item"><span class="sym">✦</span> LUMEN CAPITAL</div>
+          <div class="marquee-item"><span class="sym">❖</span> KAIZEN KINETICS</div>
+          <div class="marquee-item"><span class="sym">✦</span> HYPERFRAME METAVERSE</div>
+        </div>
+        <div class="marquee-group" aria-hidden="true">
+          <div class="marquee-item"><span class="sym">✦</span> AETHER HOROLOGY</div>
+          <div class="marquee-item"><span class="sym">❖</span> NEXUS COGNITIVE AI</div>
+          <div class="marquee-item"><span class="sym">✦</span> VOLT ACOUSTICS</div>
+          <div class="marquee-item"><span class="sym">❖</span> BIENNALE ZÜRICH</div>
+          <div class="marquee-item"><span class="sym">✦</span> LUMEN CAPITAL</div>
+          <div class="marquee-item"><span class="sym">❖</span> KAIZEN KINETICS</div>
+          <div class="marquee-item"><span class="sym">✦</span> HYPERFRAME METAVERSE</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==========================================================================
+         SECTION 3: ABOUT / STRATEGY (Spacious Editorial Reference)
+         ========================================================================== -->
+    <!-- ============================================================
+     3. About & Strategy Section
+     Editorial statement, manifesto and interactive video badge.
+     Editing hint: adjust studio description and badge trigger.
+     ============================================================ -->
+    <section class="about-editorial-section" id="about" data-bgcolor="#F6F4ED" data-textcolor="#141714">
+      <div class="container">
+        <div class="about-editorial-grid">
+          <!-- Left Column -->
+          <div class="about-editorial-col-left">
+            <p class="about-sub-lead">
+              We partner with founders, visionary teams, and cultural leaders to turn ambitious ideas into enduring
+              digital experiences that command attention.
+            </p>
+
+            <div class="about-media-card">
+              <picture>
+                <source srcset="assets/images/studio-meeting.webp" type="image/webp">
+                <img src="assets/images/studio-meeting.jpg" alt="Collaborative Studio Team" width="800" height="600"
+                  loading="lazy" decoding="async">
+              </picture>
+            </div>
+          </div>
+
+          <!-- Right Column -->
+          <div class="about-editorial-col-right">
+            <h2 class="about-headline" id="manifestoHeading">Great digital work isn't just seen — it is felt. We bridge
+              strategic clarity with tactile motion and high-performance engineering.</h2>
+
+            <div class="about-cta-wrap">
+              <a href="#process" class="btn-learn-more">
+                Learn more
+              </a>
+            </div>
+
+            <p class="about-bottom-copy">
+              Every project is led directly by our studio partners. No account managers, no layers of bureaucracy — just
+              focused, interdisciplinary craft from first concept to final deploy.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 3B: TAILORED SOLUTIONS & CLIENT STORIES (Pure White Luxury Atelier)
+         ========================================================================== -->
+    <!-- ============================================================
+     4. Tailored Solutions & Case Stories
+     High-impact case studies, metrics and client testimonials.
+     Editing hint: update client names, metric numbers and copy.
+     ============================================================ -->
+    <section class="solutions-tailored-section" id="solutions" data-bgcolor="#F6F4ED" data-textcolor="#141714">
+      <div class="container">
+        <!-- Top Row -->
+        <div class="solutions-grid-top">
+          <div class="solutions-kicker">
+            OUR PHILOSOPHY<br>&amp; APPROACH
+          </div>
+
+          <h2 class="solutions-headline">
+            We design digital systems that stand the test of time, helping brands outpace competitors through quality.
+          </h2>
+        </div>
+
+        <!-- Lower Row: Indented Media Card & Description -->
+        <div class="solutions-grid-bottom">
+          <div class="solutions-media-card">
+            <picture>
+              <source srcset="assets/images/team-collab.webp" type="image/webp">
+              <img src="assets/images/team-collab.jpg" alt="Client Collaboration Story" width="800" height="600"
+                loading="lazy" decoding="async">
+            </picture>
+          </div>
+
+          <p class="solutions-desc-copy">
+            Rather than chasing short-lived web gimmicks, we focus on durable brand foundations: fluid interaction
+            physics, uncompromising typography, and micro-interactions that elevate everyday user actions.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SECTION 4: PROCESS & METHODOLOGY (features/expand - mountExpand)
+         ====================================================================== -->
+    <!-- ============================================================
+     5. Studio Process & Methodology
+     Interactive expandable accordion rows detailing studio phases.
+     Editing hint: customize phase titles, deliverables and numbers.
+     ============================================================ -->
+    <section class="process-section" id="process" data-bgcolor="#F6F4ED" data-textcolor="#141714">
+      <div class="container">
+        <div class="process-header">
+          <div class="pill-kicker on-light">HOW WE COLLABORATE</div>
+          <h2 class="process-h2">OUR METHODOLOGY — DISCOVERY TO LAUNCH</h2>
+        </div>
+
+        <div class="ex-list" id="process-list">
+          <!-- Row 1 -->
+          <div class="ex-r on">
+            <button class="ex-h" aria-expanded="true">
+              <div class="ex-title-wrap">
+                <span class="ex-num">[01]</span>
+                <span>STRATEGIC DISCOVERY & POSITIONING</span>
+              </div>
+              <i class="ex-i"></i>
+            </button>
+            <div class="ex-b">
+              <div>
+                <div class="ex-desc-box">
+                  <p class="ex-desc-p">
+                    We audit your brand landscape, customer friction points, and market positioning to establish a clear
+                    creative direction and measurable business goals before opening Figma or writing code.
+                  </p>
+                  <div class="ex-metric-tag">
+                    <span class="ex-metric-val">100% Bespoke</span>
+                    <span class="ex-metric-lbl">Zero Template Reliance</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Row 2 -->
+          <div class="ex-r">
+            <button class="ex-h" aria-expanded="false">
+              <div class="ex-title-wrap">
+                <span class="ex-num">[02]</span>
+                <span>IDENTITY SYSTEMS & INTERACTION DESIGN</span>
+              </div>
+              <i class="ex-i"></i>
+            </button>
+            <div class="ex-b">
+              <div>
+                <div class="ex-desc-box">
+                  <p class="ex-desc-p">
+                    Translating strategic foundations into expressive visual systems. We establish typography scales,
+                    design tokens, spring physics, and fluid responsive components designed for real humans.
+                  </p>
+                  <div class="ex-metric-tag">
+                    <span class="ex-metric-val">60 FPS Smooth</span>
+                    <span class="ex-metric-lbl">Hardware Accelerated</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Row 3 -->
+          <div class="ex-r">
+            <button class="ex-h" aria-expanded="false">
+              <div class="ex-title-wrap">
+                <span class="ex-num">[03]</span>
+                <span>CREATIVE ENGINEERING & FRONTEND ARCHITECTURE</span>
+              </div>
+              <i class="ex-i"></i>
+            </button>
+            <div class="ex-b">
+              <div>
+                <div class="ex-desc-box">
+                  <p class="ex-desc-p">
+                    Developing clean semantic markup, performant micro-interactions, and robust modern web
+                    architectures. Every template and component is audited for sub-second load times and accessible
+                    standards.
+                  </p>
+                  <div class="ex-metric-tag">
+                    <span class="ex-metric-val">&lt; 800ms</span>
+                    <span class="ex-metric-lbl">First Contentful Paint</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Row 4 -->
+          <div class="ex-r">
+            <button class="ex-h" aria-expanded="false">
+              <div class="ex-title-wrap">
+                <span class="ex-num">[04]</span>
+                <span>LAUNCH AUDIT & CONTINUOUS PERFORMANCE</span>
+              </div>
+              <i class="ex-i"></i>
+            </button>
+            <div class="ex-b">
+              <div>
+                <div class="ex-desc-box">
+                  <p class="ex-desc-p">
+                    Edge deployment, cross-device testing, SEO optimization, and handoff documentation. We ensure your
+                    new digital flagship operates reliably under peak load on day one.
+                  </p>
+                  <div class="ex-metric-tag">
+                    <span class="ex-metric-val">98.4%</span>
+                    <span class="ex-metric-lbl">Lighthouse Benchmark</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SECTION 5: SERVICES (Dark Olive + Neon Yellow Highlighted Card)
+         ====================================================================== -->
+    <!-- ============================================================
+     6. Services & Core Capabilities
+     3D interactive tilt cards showcasing specialized offerings.
+     Editing hint: edit service titles, descriptions and tags.
+     ============================================================ -->
+    <section class="services-dark-section" id="services" data-bgcolor="#111A13" data-textcolor="#FFFFFF">
+      <div class="container">
+        <div class="services-dark-header">
+          <div class="services-dark-title-col">
+            <h2 class="services-dark-h2">
+              END-TO-END<br>CREATIVE &amp; TECHNICAL<br>EXCELLENCE
+            </h2>
+          </div>
+
+          <div class="services-dark-desc-col">
+            <div class="pill-kicker on-dark">OUR DISCIPLINES</div>
+            <p class="services-dark-desc">
+              From brand positioning to custom creative engineering, we design and build complete digital ecosystems
+              that stand out in crowded markets.
+            </p>
+          </div>
+        </div>
+
+        <div class="service-cards-row">
+          <!-- Card 1: Featured Yellow -->
+          <div class="svc-card featured">
+            <div class="svc-card-top">
+              <div class="svc-icon-box">✦</div>
+              <div class="svc-arrow-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+                  <path d="M7 17L17 7M17 7H7M17 7V17" />
+                </svg>
+              </div>
+            </div>
+            <div>
+              <h3 class="svc-card-title">BRAND IDENTITY</h3>
+              <p class="svc-card-desc">
+                Strategic positioning, kinetic visual systems, bespoke typography, and design tokens that express your
+                brand's unique point of view across every medium.
+              </p>
+            </div>
+          </div>
+
+          <!-- Card 2: Dark Olive with Code Icon -->
+          <div class="svc-card dark">
+            <div class="svc-card-top">
+              <div class="svc-icon-box">&lt;/&gt;</div>
+              <div class="svc-arrow-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+                  <path d="M7 17L17 7M17 7H7M17 7V17" />
+                </svg>
+              </div>
+            </div>
+            <div>
+              <h3 class="svc-card-title">DIGITAL ENGINEERING</h3>
+              <p class="svc-card-desc">
+                Performance-first web architectures, custom interactive shaders, headless commerce, and frictionless
+                frontend applications built for scale.
+              </p>
+            </div>
+          </div>
+
+          <!-- Card 3: Dark Olive with Vector Icon -->
+          <div class="svc-card dark">
+            <div class="svc-card-top">
+              <div class="svc-icon-box">❖</div>
+              <div class="svc-arrow-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+                  <path d="M7 17L17 7M17 7H7M17 7V17" />
+                </svg>
+              </div>
+            </div>
+            <div>
+              <h3 class="svc-card-title">EXPERIENCE DESIGN</h3>
+              <p class="svc-card-desc">
+                Immersive product design, design systems, conversion-driven user journeys, and tactile
+                micro-interactions that leave a lasting impression.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SECTION 6: SELECTED WORKS / SCULPTED ARTIFACTS (Horizontal Rail)
+         ====================================================================== -->
+    <!-- ============================================================
+     7. Selected Work & Portfolio Showcase
+     Featured project grid with badges, tags and modal triggers.
+     Editing hint: replace project thumbnails, titles and tags.
+     ============================================================ -->
+    <section class="works-section" id="works" data-bgcolor="#142016" data-textcolor="#FFFFFF">
+      <div class="container">
+        <div class="works-header">
+          <div>
+            <div class="pill-kicker on-dark">CASE ARCHIVE</div>
+            <h2 class="works-h2">SELECTED WORK</h2>
+          </div>
+          <div class="works-header-rail-badges">
+            <span class="rail-badge-pill">FEATURED RELEASES</span>
+            <span class="rail-count-badge">01 — 06 / INDEX</span>
+          </div>
+        </div>
+
+        <div class="works-rail-wrap" id="worksRailWrap">
+          <div class="works-rail" id="worksRail" aria-label="Featured Works Showcase">
+            <!-- 01 -->
+            <div class="work-card" data-cur="EXPLORE">
+              <div class="work-card-topbar">
+                <span class="work-num-pill">01 // KINETIC LUXURY</span>
+                <span class="work-award-badge">AWWWARDS SOTD</span>
+              </div>
+              <div class="work-image-frame">
+                <picture>
+                  <source srcset="assets/images/commission-1.webp" type="image/webp">
+                  <img src="assets/images/commission-1.jpg" alt="Aether Real-Time 3D WebGL Configurator" width="800"
+                    height="600" loading="lazy" decoding="async">
+                </picture>
+              </div>
+              <div class="work-info-block">
+                <div class="work-client-tag">AETHER HOROLOGY</div>
+                <h3 class="work-title">Interactive Timepiece Platform</h3>
+                <div class="work-tags-row">
+                  <span class="work-tag">3D Configurator</span>
+                  <span class="work-tag">Kinetic Brand</span>
+                  <span class="work-tag">Creative Dev</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 02 -->
+            <div class="work-card" data-cur="EXPLORE">
+              <div class="work-card-topbar">
+                <span class="work-num-pill">02 // AI DATA CORE</span>
+                <span class="work-award-badge">FWA OF THE DAY</span>
+              </div>
+              <div class="work-image-frame">
+                <picture>
+                  <source srcset="assets/images/commission-2.webp" type="image/webp">
+                  <img src="assets/images/commission-2.jpg" alt="Nexus Digital Identity & Design System" width="800"
+                    height="600" loading="lazy" decoding="async">
+                </picture>
+              </div>
+              <div class="work-info-block">
+                <div class="work-client-tag">NEXUS PROTOCOL</div>
+                <h3 class="work-title">Digital Identity & Design System</h3>
+                <div class="work-tags-row">
+                  <span class="work-tag">Spatial Canvas</span>
+                  <span class="work-tag">Data Architecture</span>
+                  <span class="work-tag">Motion System</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 03 -->
+            <div class="work-card" data-cur="EXPLORE">
+              <div class="work-card-topbar">
+                <span class="work-num-pill">03 // SPATIAL SYNTH</span>
+                <span class="work-award-badge">SITE OF THE MONTH</span>
+              </div>
+              <div class="work-image-frame">
+                <picture>
+                  <source srcset="assets/images/commission-3.webp" type="image/webp">
+                  <img src="assets/images/commission-3.jpg" alt="Volt Acoustics Synthesizer" width="800" height="600"
+                    loading="lazy" decoding="async">
+                </picture>
+              </div>
+              <div class="work-info-block">
+                <div class="work-client-tag">VOLT ACOUSTICS</div>
+                <h3 class="work-title">Tactile Sound Experience</h3>
+                <div class="work-tags-row">
+                  <span class="work-tag">Web Audio API</span>
+                  <span class="work-tag">Shader Dev</span>
+                  <span class="work-tag">Hardware UI</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 04 -->
+            <div class="work-card" data-cur="EXPLORE">
+              <div class="work-card-topbar">
+                <span class="work-num-pill">04 // EXHIBITION</span>
+                <span class="work-award-badge">DEV OF YEAR</span>
+              </div>
+              <div class="work-image-frame">
+                <picture>
+                  <source srcset="assets/images/commission-4.webp" type="image/webp">
+                  <img src="assets/images/commission-4.jpg" alt="Biennale Virtual Pavilion" width="800" height="600"
+                    loading="lazy" decoding="async">
+                </picture>
+              </div>
+              <div class="work-info-block">
+                <div class="work-client-tag">BIENNALE ZÜRICH</div>
+                <h3 class="work-title">Spatial Exhibition Pavilion</h3>
+                <div class="work-tags-row">
+                  <span class="work-tag">Spatial 3D</span>
+                  <span class="work-tag">Virtual Gallery</span>
+                  <span class="work-tag">GSAP Choreography</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 05 -->
+            <div class="work-card" data-cur="EXPLORE">
+              <div class="work-card-topbar">
+                <span class="work-num-pill">05 // FINTECH CORE</span>
+                <span class="work-award-badge">SITE OF THE DAY</span>
+              </div>
+              <div class="work-image-frame">
+                <picture>
+                  <source srcset="assets/images/commission-5.webp" type="image/webp">
+                  <img src="assets/images/commission-5.jpg" alt="Lumen Kinetic Capital" width="800" height="600"
+                    loading="lazy" decoding="async">
+                </picture>
+              </div>
+              <div class="work-info-block">
+                <div class="work-client-tag">LUMEN CAPITAL</div>
+                <h3 class="work-title">Enterprise Liquidity Platform</h3>
+                <div class="work-tags-row">
+                  <span class="work-tag">High-Frequency UI</span>
+                  <span class="work-tag">Data Visual</span>
+                  <span class="work-tag">WebGL</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 06 -->
+            <div class="work-card" data-cur="EXPLORE">
+              <div class="work-card-topbar">
+                <span class="work-num-pill">06 // METAVERSE</span>
+                <span class="work-award-badge">SPECIAL KUDOS</span>
+              </div>
+              <div class="work-image-frame">
+                <picture>
+                  <source srcset="assets/images/commission-6.webp" type="image/webp">
+                  <img src="assets/images/commission-6.jpg" alt="Kaizen Motion-Led Commerce Experience" width="800"
+                    height="600" loading="lazy" decoding="async">
+                </picture>
+              </div>
+              <div class="work-info-block">
+                <div class="work-client-tag">KAIZEN KINETICS</div>
+                <h3 class="work-title">Motion-Led Commerce Experience</h3>
+                <div class="work-tags-row">
+                  <span class="work-tag">3D Interactive</span>
+                  <span class="work-tag">Kinetic Identity</span>
+                  <span class="work-tag">Shader Dev</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Live Progress Indicator Rail Track -->
+          <div class="works-rail-progress" aria-hidden="true">
+            <div class="works-rail-bar" id="worksRailBar"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SECTION 7: CAPABILITIES + ARCHED PORTAL FRAME (Bottom Right in Ref)
+         ====================================================================== -->
+    <!-- ============================================================
+     8. Studio Capabilities & Portal
+     Interactive portal frame with rotating discipline scene graphics.
+     Editing hint: modify capability titles and tags in markup.
+     ============================================================ -->
+    <section class="capabilities-section" id="capabilities" data-bgcolor="#16251A" data-textcolor="#FFFFFF">
+      <div class="container">
+        <div class="capabilities-grid">
+          <div class="cap-list-col">
+            <div class="pill-kicker on-dark">CORE DISCIPLINE</div>
+            <div class="cap-item active" data-img="assets/images/team-collab.jpg">WEBSITE DESIGN</div>
+            <div class="cap-item" data-img="assets/images/team-work.jpg">BRANDING DESIGN</div>
+            <div class="cap-item" data-img="assets/images/studio-meeting.jpg">PRODUCT DESIGN</div>
+            <div class="cap-item" data-img="assets/images/team-hero.jpg">DEVELOPMENT</div>
+            <div class="cap-item" data-img="assets/images/project-1.jpg">MOTION SYSTEMS</div>
+          </div>
+
+          <div class="cap-portal-col">
+            <div class="arched-portal-frame">
+
+              <svg width="0" height="0" class="sr-hidden-svg" aria-hidden="true">
+                <defs>
+                  <radialGradient id="capGlow" cx=".5" cy=".5" r=".6">
+                    <stop offset="0" stop-color="#E2F804" stop-opacity=".16" />
+                    <stop offset="1" stop-color="#E2F804" stop-opacity="0" />
+                  </radialGradient>
+                  <clipPath id="capScr">
+                    <rect x="138" y="186" width="124" height="188" rx="6" />
+                  </clipPath>
+                </defs>
+              </svg><svg class="cap-scene on" viewBox="15 30 370 460" preserveAspectRatio="xMidYMid slice"
+                aria-hidden="true">
+
+
+                <g transform="translate(0 28)">
+                  <rect class="dr" pathLength="1" x="60" y="150" width="280" height="230" rx="14" />
+                  <path class="dr" pathLength="1" d="M60 188H340" />
+                  <circle class="y" cx="80" cy="169" r="4" />
+                  <circle class="w2" cx="95" cy="169" r="4" />
+                  <circle class="w2" cx="110" cy="169" r="4" />
+                  <rect class="w2 cs-fb cs-bar" x="78" y="208" width="150" height="14" rx="7" />
+                  <rect class="w" x="78" y="232" width="110" height="8" rx="4" />
+                  <rect class="y cs-fb cs-pulse" x="78" y="256" width="76" height="26" rx="13" />
+                  <rect class="dr hl" pathLength="1" x="248" y="206" width="76" height="76" rx="12" />
+                  <path class="dr hl" pathLength="1" d="M256 270L276 244L292 258L304 240L318 270" />
+                  <rect class="w cs-fb cs-bob" x="78" y="302" width="70" height="56" rx="8" />
+                  <rect class="w cs-fb cs-bob" class="w cs-fb cs-bob del-35" x="168" y="302" width="70" height="56"
+                    rx="8" />
+                  <rect class="w cs-fb cs-bob" class="w cs-fb cs-bob del-7" x="258" y="302" width="70" height="56"
+                    rx="8" />
+                  <circle class="ys cs-fb cs-ripple" cx="116" cy="269" r="16" />
+                  <g transform="translate(112 264)">
+                    <g class="cs-cursor">
+                      <path d="M0 0V16L4.5 12L8 19L10.5 18L7 11H13Z" fill="#fff" stroke="#0E1610" stroke-width="1.2" />
+                    </g>
+                  </g>
+                </g>
+              </svg><svg class="cap-scene" viewBox="15 30 370 460" preserveAspectRatio="xMidYMid slice"
+                aria-hidden="true">
+
+
+                <g transform="translate(0 28)">
+                  <g class="cs-fb cs-spin">
+                    <circle class="gd" cx="200" cy="250" r="108" />
+                    <circle class="gd" cx="200" cy="250" r="84" />
+                  </g>
+                  <path class="dr dim" pathLength="1" d="M200 120V380M70 250H330" />
+                  <rect class="dr hl dim" pathLength="1" x="136" y="186" width="128" height="128" />
+                  <path class="y"
+                    d="M200 190C233 190 260 217 260 250C260 283 233 310 200 310C167 310 140 283 140 250C140 217 167 190 200 190Z">
+                    <animate attributeName="d" dur="6s" repeatCount="indefinite" calcMode="spline"
+                      keyTimes="0;.33;.66;1" keySplines=".4 0 .2 1;.4 0 .2 1;.4 0 .2 1"
+                      values="M200 190C233 190 260 217 260 250C260 283 233 310 200 310C167 310 140 283 140 250C140 217 167 190 200 190Z;M200 186C246 186 264 204 264 250C264 296 246 314 200 314C154 314 136 296 136 250C136 204 154 186 200 186Z;M206 188C240 184 266 214 258 252C252 290 226 312 192 308C158 304 138 276 142 242C146 210 174 192 206 188Z;M200 190C233 190 260 217 260 250C260 283 233 310 200 310C167 310 140 283 140 250C140 217 167 190 200 190Z" />
+                  </path>
+                  <circle cx="200" cy="250" r="20" fill="#0E1610" class="cs-fb cs-pulse" />
+                  <rect class="y cs-fb cs-pulse" x="132" y="182" width="8" height="8" />
+                  <rect class="y cs-fb cs-pulse" x="260" y="182" width="8" height="8" />
+                  <rect class="y cs-fb cs-pulse" x="132" y="310" width="8" height="8" />
+                  <rect class="y cs-fb cs-pulse" x="260" y="310" width="8" height="8" />
+                  <circle class="y cs-fb cs-pop" class="y cs-fb cs-pop del-0" cx="140" cy="372" r="12" />
+                  <circle class="w2 cs-fb cs-pop" class="w2 cs-fb cs-pop del-2" cx="180" cy="372" r="12" />
+                  <circle class="sw3 cs-fb cs-pop" class="sw3 cs-fb cs-pop del-4" cx="220" cy="372" r="12" />
+                  <circle class="ys cs-fb cs-pop" class="ys cs-fb cs-pop del-6" cx="260" cy="372" r="12" />
+                  <text x="296" y="382" class="tx">Aa</text>
+                </g>
+              </svg><svg class="cap-scene" viewBox="15 30 370 460" preserveAspectRatio="xMidYMid slice"
+                aria-hidden="true">
+
+
+                <g transform="translate(0 28)">
+                  <rect class="dr" pathLength="1" x="126" y="138" width="148" height="262" rx="28" />
+                  <rect class="w2" x="176" y="148" width="48" height="7" rx="3.5" />
+                  <circle class="y" cx="152" cy="170" r="8" />
+                  <rect class="w2" x="166" y="164" width="60" height="5" rx="2.5" />
+                  <rect class="w" x="166" y="174" width="40" height="5" rx="2.5" />
+                  <g clip-path="url(#capScr)">
+                    <g class="cs-scroll">
+                      <g>
+                        <rect class="w" x="148" y="190" width="104" height="40" rx="8" />
+                        <circle class="y" cx="164" cy="210" r="7" />
+                        <rect class="w2" x="178" y="202" width="56" height="5" rx="2.5" />
+                        <rect class="w" x="178" y="212" width="38" height="5" rx="2.5" />
+                      </g>
+                      <g>
+                        <rect class="w" x="148" y="240" width="104" height="40" rx="8" />
+                        <circle class="w2" cx="164" cy="260" r="7" />
+                        <rect class="w2" x="178" y="252" width="56" height="5" rx="2.5" />
+                        <rect class="w" x="178" y="262" width="38" height="5" rx="2.5" />
+                      </g>
+                      <g>
+                        <rect class="w" x="148" y="290" width="104" height="40" rx="8" />
+                        <circle class="w2" cx="164" cy="310" r="7" />
+                        <rect class="w2" x="178" y="302" width="56" height="5" rx="2.5" />
+                        <rect class="w" x="178" y="312" width="38" height="5" rx="2.5" />
+                      </g>
+                      <g>
+                        <rect class="w" x="148" y="340" width="104" height="40" rx="8" />
+                        <circle class="y" cx="164" cy="360" r="7" />
+                        <rect class="w2" x="178" y="352" width="56" height="5" rx="2.5" />
+                        <rect class="w" x="178" y="362" width="38" height="5" rx="2.5" />
+                      </g>
+                      <g>
+                        <rect class="w" x="148" y="390" width="104" height="40" rx="8" />
+                        <circle class="w2" cx="164" cy="410" r="7" />
+                        <rect class="w2" x="178" y="402" width="56" height="5" rx="2.5" />
+                        <rect class="w" x="178" y="412" width="38" height="5" rx="2.5" />
+                      </g>
+                      <g>
+                        <rect class="w" x="148" y="440" width="104" height="40" rx="8" />
+                        <circle class="w2" cx="164" cy="460" r="7" />
+                        <rect class="w2" x="178" y="452" width="56" height="5" rx="2.5" />
+                        <rect class="w" x="178" y="462" width="38" height="5" rx="2.5" />
+                      </g>
+                    </g>
+                  </g>
+                  <circle class="y cs-fb cs-pop" cx="182" cy="386" r="3.5" />
+                  <circle class="w2 cs-fb cs-pop" class="w2 cs-fb cs-pop del-2" cx="200" cy="386" r="3.5" />
+                  <circle class="w2 cs-fb cs-pop" class="w2 cs-fb cs-pop del-4" cx="218" cy="386" r="3.5" />
+                  <g class="cs-fb cs-bob">
+                    <rect class="dr hl" pathLength="1" x="30" y="214" width="76" height="26" rx="13" /><text x="68"
+                      y="231" class="tx2" text-anchor="middle">UX FLOW</text>
+                    <path class="dr hl" pathLength="1" d="M106 227H126" />
+                  </g>
+                  <g class="cs-fb cs-bob del-6">
+                    <rect class="dr hl" pathLength="1" x="294" y="306" width="84" height="26" rx="13" /><text x="336"
+                      y="323" class="tx2" text-anchor="middle">PROTOTYPE</text>
+                    <path class="dr hl" pathLength="1" d="M294 319H274" />
+                  </g>
+                </g>
+              </svg><svg class="cap-scene" viewBox="15 30 370 460" preserveAspectRatio="xMidYMid slice"
+                aria-hidden="true">
+
+
+                <g transform="translate(0 28)">
+                  <rect class="dr" pathLength="1" x="50" y="150" width="300" height="236" rx="14" />
+                  <path class="dr" pathLength="1" d="M50 186H350" />
+                  <circle class="y" cx="70" cy="168" r="4" />
+                  <circle class="w2" cx="85" cy="168" r="4" />
+                  <circle class="w2" cx="100" cy="168" r="4" />
+                  <text x="330" y="172" class="tx2" text-anchor="end">&lt;/&gt; app.js</text>
+                  <rect class="w cs-ln" x="62" y="206" width="6" height="8" rx="2" />
+                  <rect class="y cs-fb cs-type" class="y cs-fb cs-type del-0" x="74" y="206" width="60" height="8"
+                    rx="4" />
+                  <rect class="w2 cs-fb cs-type" class="w2 cs-fb cs-type del-35" x="142" y="206" width="90" height="8"
+                    rx="4" />
+                  <rect class="w cs-ln" x="62" y="230" width="6" height="8" rx="2" />
+                  <rect class="w2 cs-fb cs-type" class="w2 cs-fb cs-type del-6" x="92" y="230" width="130" height="8"
+                    rx="4" />
+                  <rect class="w cs-ln" x="62" y="254" width="6" height="8" rx="2" />
+                  <rect class="w2 cs-fb cs-type" class="w2 cs-fb cs-type del-9" x="92" y="254" width="80" height="8"
+                    rx="4" />
+                  <rect class="y cs-fb cs-type" class="y cs-fb cs-type del-12" x="180" y="254" width="70" height="8"
+                    rx="4" />
+                  <rect class="w cs-ln" x="62" y="278" width="6" height="8" rx="2" />
+                  <rect class="w cs-fb cs-type" class="w cs-fb cs-type del-15" x="92" y="278" width="110" height="8"
+                    rx="4" />
+                  <rect class="w cs-ln" x="62" y="302" width="6" height="8" rx="2" />
+                  <rect class="y cs-fb cs-type" class="y cs-fb cs-type del-18" x="74" y="302" width="40" height="8"
+                    rx="4" />
+                  <rect class="y cs-blink" x="120" y="300" width="3" height="12" />
+                  <rect class="w" x="62" y="338" width="276" height="34" rx="8" />
+                  <g class="cs-okfade">
+                    <circle class="y" cx="80" cy="355" r="5" /><text x="94" y="359" class="tx2">build passed &#183;
+                      0.8s</text>
+                  </g>
+                </g>
+              </svg><svg class="cap-scene" viewBox="15 30 370 460" preserveAspectRatio="xMidYMid slice"
+                aria-hidden="true">
+
+
+                <g transform="translate(0 28)">
+                  <path class="dr dim" pathLength="1" d="M70 380V140M70 380H340" />
+                  <path class="dr dim" pathLength="1" d="M70 380H170M330 140H200" />
+                  <path id="capCurve" class="dr hl" pathLength="1" fill="none" stroke-width="3"
+                    d="M70 380C170 380 200 140 330 140" />
+                  <circle class="ys cs-fb cs-pulse" fill="#0E1610" cx="170" cy="380" r="6" />
+                  <circle class="ys cs-fb cs-pulse" fill="#0E1610" cx="200" cy="140" r="6" />
+                  <circle class="y" r="5" opacity=".35">
+                    <animateMotion dur="2.6s" begin=".24s" repeatCount="indefinite" calcMode="spline" keyPoints="0;1"
+                      keyTimes="0;1" keySplines=".65 0 .25 1">
+                      <mpath href="#capCurve" />
+                    </animateMotion>
+                  </circle>
+                  <circle class="y" r="7" opacity=".6">
+                    <animateMotion dur="2.6s" begin=".12s" repeatCount="indefinite" calcMode="spline" keyPoints="0;1"
+                      keyTimes="0;1" keySplines=".65 0 .25 1">
+                      <mpath href="#capCurve" />
+                    </animateMotion>
+                  </circle>
+                  <circle class="y" r="10">
+                    <animateMotion dur="2.6s" repeatCount="indefinite" calcMode="spline" keyPoints="0;1" keyTimes="0;1"
+                      keySplines=".65 0 .25 1">
+                      <mpath href="#capCurve" />
+                    </animateMotion>
+                  </circle>
+                  <path class="dr dim" pathLength="1" d="M70 424H330" />
+                  <rect class="y" x="-5" y="-5" width="10" height="10" transform="translate(70 424) rotate(45)" />
+                  <rect class="y" x="-5" y="-5" width="10" height="10" transform="translate(190 424) rotate(45)" />
+                  <rect class="y" x="-5" y="-5" width="10" height="10" transform="translate(330 424) rotate(45)" />
+                  <g class="cs-playhead">
+                    <path d="M70 410V438" stroke="#fff" stroke-width="2" stroke-linecap="round" />
+                  </g>
+                  <text x="76" y="132" class="tx2">ease-in-out</text>
+                </g>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Floating Accolade Image Preview (features/hover) -->
+    <div class="accolade-floating-thumb" id="accoladeThumb" aria-hidden="true">
+      <img id="accoladeThumbImg" src="assets/images/accolade-1.jpg" alt="Award Winning Project" width="800" height="600"
+        decoding="async">
+    </div>
+
+    <!-- ======================================================================
+         SECTION 8: ACCOLADES & TROPHIES (features/hover - Interactive List)
+         ====================================================================== -->
+    <!-- ============================================================
+     11. Accolades & Trophies Showcase
+     Interactive floating thumbnail preview on award titles.
+     Editing hint: update award names, organizations and years.
+     ============================================================ -->
+    <section class="accolades-section" id="accolades" data-bgcolor="#1B2B1E" data-textcolor="#FFFFFF">
+      <div class="container">
+        <div class="accolades-header">
+          <div>
+            <div class="pill-kicker on-dark">HALL OF RECOGNITION</div>
+            <h2 class="accolades-h2">PROVEN EXCELLENCE<br>ON GLOBAL STAGES</h2>
+          </div>
+          <div class="text-right">
+            <div class="hero-stat-large" data-to="38" data-suf="+">38+</div>
+            <div class="hero-stat-desc">
+              GLOBAL HONORS WON</div>
+          </div>
+        </div>
+
+        <div class="accolades-list">
+          <div class="accolade-row" data-img="assets/images/accolade-1.jpg">
+            <span class="accolade-year">2026 // 01</span>
+            <span class="accolade-title">AWWWARDS SITE OF THE DAY</span>
+            <span class="accolade-project">Aether Horology // Real-Time WebGL Configurator</span>
+            <span class="accolade-arrow">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+                <path d="M7 17L17 7M17 7H7M17 7V17" />
+              </svg>
+            </span>
+          </div>
+
+          <div class="accolade-row" data-img="assets/images/accolade-2.jpg">
+            <span class="accolade-year">2025 // 02</span>
+            <span class="accolade-title">FWA OF THE MONTH</span>
+            <span class="accolade-project">Nexus Protocol // Digital Identity & Design System</span>
+            <span class="accolade-arrow">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+                <path d="M7 17L17 7M17 7H7M17 7V17" />
+              </svg>
+            </span>
+          </div>
+
+          <div class="accolade-row" data-img="assets/images/accolade-3.jpg">
+            <span class="accolade-year">2025 // 03</span>
+            <span class="accolade-title">CANNES LIONS BRONZE</span>
+            <span class="accolade-project">Biennale Zürich // Spatial Exhibition Pavilion</span>
+            <span class="accolade-arrow">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+                <path d="M7 17L17 7M17 7H7M17 7V17" />
+              </svg>
+            </span>
+          </div>
+
+          <div class="accolade-row" data-img="assets/images/accolade-4.jpg">
+            <span class="accolade-year">2024 // 04</span>
+            <span class="accolade-title">RED DOT: BEST OF BEST</span>
+            <span class="accolade-project">Volt Acoustics // Spatial Synthesizer Platform</span>
+            <span class="accolade-arrow">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+                <path d="M7 17L17 7M17 7H7M17 7V17" />
+              </svg>
+            </span>
+          </div>
+
+          <div class="accolade-row" data-img="assets/images/accolade-5.jpg">
+            <span class="accolade-year">2024 // 05</span>
+            <span class="accolade-title">TOKYO TDC ANNUAL AWARD</span>
+            <span class="accolade-project">Kaizen Spatial // Kinetic Typography Identity</span>
+            <span class="accolade-arrow">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+                <path d="M7 17L17 7M17 7H7M17 7V17" />
+              </svg>
+            </span>
+          </div>
+
+          <div class="accolade-row" data-img="assets/images/accolade-6.jpg">
+            <span class="accolade-year">2023 // 06</span>
+            <span class="accolade-title">WEBBY AWARDS WINNER</span>
+            <span class="accolade-project">Lumen Capital // High-Frequency Financial Ledger</span>
+            <span class="accolade-arrow">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+                <path d="M7 17L17 7M17 7H7M17 7V17" />
+              </svg>
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SECTION 9: STUDIO ATELIER & LEADERSHIP (Warm Light Cream #F6F4ED)
+         ====================================================================== -->
+    <!-- ============================================================
+     12. Studio Atelier & Team Leadership
+     Leadership profiles and creative director biographies.
+     Editing hint: replace team photos, names and role descriptions.
+     ============================================================ -->
+    <section class="atelier-cream-section" id="atelier" data-bgcolor="#F4F1EA" data-textcolor="#142016">
+      <div class="container">
+        <div class="atelier-header">
+          <div>
+            <div class="pill-kicker on-light">THE ATELIER ARCHITECTS</div>
+            <h2 class="atelier-h2">DIRECTORS & LEAD<br>DISCIPLINE ARCHITECTS</h2>
+          </div>
+          <p class="hero-sub-p">
+            A tight-knit collective of designers, creative engineers, and kinetic strategists dedicated to raising the
+            aesthetic ceiling of the open web.
+          </p>
+        </div>
+
+        <div class="atelier-grid">
+          <!-- Member 1 -->
+          <div class="member-card">
+            <div class="member-photo">
+              <picture>
+                <source srcset="assets/images/team-elena.webp" type="image/webp">
+                <img src="assets/images/team-elena.jpg" alt="Elena Rostova, Executive Creative Director" width="800"
+                  height="600" loading="lazy" decoding="async">
+              </picture>
+            </div>
+            <h3 class="member-name">Elena Rostova</h3>
+            <div class="member-role">FOUNDING PARTNER / CREATIVE DIR</div>
+            <p class="member-bio">
+              Former Design Director at Pentagram London. Pioneer in kinetic design systems, brand architecture, and
+              tactile editorial aesthetics.
+            </p>
+            <div class="member-socials">
+              <a href="https://read.cv" class="social-tag" target="_blank" rel="noopener noreferrer">READCV ↗</a>
+              <a href="https://x.com" class="social-tag" target="_blank" rel="noopener noreferrer">TWITTER ↗</a>
+            </div>
+          </div>
+
+          <!-- Member 2 -->
+          <div class="member-card">
+            <div class="member-photo">
+              <picture>
+                <source srcset="assets/images/team-marcus.webp" type="image/webp">
+                <img src="assets/images/team-marcus.jpg" alt="Marcus Vance, Head of Creative Technology" width="800"
+                  height="600" loading="lazy" decoding="async">
+              </picture>
+            </div>
+            <h3 class="member-name">Marcus Vance</h3>
+            <div class="member-role">PARTNER / HEAD OF TECH</div>
+            <p class="member-bio">
+              Core contributor to open-source WebGL shaders and WebGPU pipelines. 12x Awwwards Dev of the Year nominee
+              with obsessive 60fps rigor.
+            </p>
+            <div class="member-socials">
+              <a href="https://github.com" class="social-tag" target="_blank" rel="noopener noreferrer">GITHUB ↗</a>
+              <a href="https://shadertoy.com" class="social-tag" target="_blank" rel="noopener noreferrer">GLSL ↗</a>
+            </div>
+          </div>
+
+          <!-- Member 3 -->
+          <div class="member-card">
+            <div class="member-photo">
+              <picture>
+                <source srcset="assets/images/team-naoko.webp" type="image/webp">
+                <img src="assets/images/team-naoko.jpg" alt="Naoko Takahashi, VP of Interaction Architecture"
+                  width="800" height="600" loading="lazy" decoding="async">
+              </picture>
+            </div>
+            <h3 class="member-name">Naoko Takahashi</h3>
+            <div class="member-role">VP / INTERACTION ARCHITECTURE</div>
+            <p class="member-bio">
+              Specialist in spatial computing physics, haptic micro-interactions, and multi-device interaction models
+              for world-class luxury ateliers.
+            </p>
+            <div class="member-socials">
+              <a href="https://linkedin.com" class="social-tag" target="_blank" rel="noopener noreferrer">LINKEDIN ↗</a>
+              <a href="https://figma.com" class="social-tag" target="_blank" rel="noopener noreferrer">FIGMA ↗</a>
+            </div>
+          </div>
+
+          <!-- Member 4 -->
+          <div class="member-card">
+            <div class="member-photo">
+              <picture>
+                <source srcset="assets/images/team-julian.webp" type="image/webp">
+                <img src="assets/images/team-julian.jpg" alt="Julian Thorne, Principal Systems Director" width="800"
+                  height="600" loading="lazy" decoding="async">
+              </picture>
+            </div>
+            <h3 class="member-name">Julian Thorne</h3>
+            <div class="member-role">PRINCIPAL / SYSTEMS & BRAND</div>
+            <p class="member-bio">
+              Curator of typographic proportion and algorithmic grid architectures. Guiding global organizations in
+              enterprise scale identity governance.
+            </p>
+            <div class="member-socials">
+              <a href="https://are.na" class="social-tag" target="_blank" rel="noopener noreferrer">ARE.NA ↗</a>
+              <a href="https://substack.com" class="social-tag" target="_blank" rel="noopener noreferrer">SUBSTACK ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SECTION 10: CLIENT TESTIMONIALS (testimonials/words - mountQuotes)
+         ====================================================================== -->
+    <!-- ============================================================
+     9. Client Quotes & Endorsements
+     Dynamic word-by-word highlighted client testimonials.
+     Editing hint: replace quotes and author credentials.
+     ============================================================ -->
+    <section class="quotes-dark-section" id="testimonials" data-bgcolor="#1B2B1E" data-textcolor="#FFFFFF">
+      <div class="container">
+        <div class="quotes-wrapper">
+          <div class="pill-kicker on-dark">CLIENT ENDORSEMENTS</div>
+
+          <!-- Animated Blockquote with Word-by-Word Keyframe Stagger -->
+          <blockquote class="quotes-blockquote" id="quote-display" aria-live="polite">
+            <!-- Dynamically populated word-by-word with spring timing -->
+          </blockquote>
+
+          <!-- Client Switcher Tabs -->
+          <div class="quotes-tabs" id="quotes-tabs">
+            <button class="q-tab-btn active" data-i="0">
+              <div class="q-tab-bar"></div>
+              <span class="q-author">Sarah Jenkins</span>
+              <span class="q-role">VP Brand, Aether Watchmaking</span>
+            </button>
+            <button class="q-tab-btn" data-i="1">
+              <div class="q-tab-bar"></div>
+              <span class="q-author">David Sterling</span>
+              <span class="q-role">Head of Product, Nexus Protocol</span>
+            </button>
+            <button class="q-tab-btn" data-i="2">
+              <div class="q-tab-bar"></div>
+              <span class="q-author">Julian Thorne</span>
+              <span class="q-role">Director, Biennale Zürich</span>
+            </button>
+            <button class="q-tab-btn" data-i="3">
+              <div class="q-tab-bar"></div>
+              <span class="q-author">Sofia Chen</span>
+              <span class="q-role">Founder, Volt Acoustics</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SECTION 9: BLOG & ARTICLES (Top Right in Ref - Light Cream #F6F4ED)
+         ====================================================================== -->
+    <!-- ============================================================
+     10. Journal & Editorial Insights
+     Curated articles on AI, spatial design and brand strategy.
+     Editing hint: update article titles, dates and cover images.
+     ============================================================ -->
+    <section class="insights-cream-section" id="insights" data-bgcolor="#F7F5EE" data-textcolor="#142016">
+      <div class="container">
+        <div class="insights-header">
+          <div>
+            <div class="pill-kicker on-light">OUR RECENT WRITINGS</div>
+            <h2 class="insights-h2">THOUGHTS & PERSPECTIVES</h2>
+          </div>
+
+          <a href="journal.html" class="btn-read-all">
+            <span>READ ALL ARTICLES</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+              <path d="M7 17L17 7M17 7H7M17 7V17" />
+            </svg>
+          </a>
+        </div>
+
+        <div class="articles-grid">
+          <!-- Card 1 -->
+          <div class="article-card" data-cur="READ">
+            <div class="article-thumb">
+              <picture>
+                <source srcset="assets/images/blog-1.webp" type="image/webp">
+                <img src="assets/images/blog-1.jpg" alt="High-Performance Responsive Architecture Article" width="800"
+                  height="600" loading="lazy" decoding="async">
+              </picture>
+            </div>
+            <div class="pill-kicker on-light pill-micro">UI & RESPONSIVE</div>
+            <h3 class="article-title"><a href="article.html" class="title-link-clean">The Digital Innovation Studio: A
+                Haven for Creative Engineering</a></h3>
+            <div class="article-meta">
+              <span>April 30, 2026</span>
+              <a href="article.html" class="article-link">READ MORE ↗</a>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="article-card" data-cur="READ">
+            <div class="article-thumb">
+              <picture>
+                <source srcset="assets/images/blog-2.webp" type="image/webp">
+                <img src="assets/images/blog-2.jpg" alt="Marketing Communication Across Departments Article" width="800"
+                  height="600" loading="lazy" decoding="async">
+              </picture>
+            </div>
+            <div class="pill-kicker on-light pill-micro">COLLABORATION</div>
+            <h3 class="article-title"><a href="article.html" class="title-link-clean">Communication Between
+                Cross-Disciplinary Departments</a></h3>
+            <div class="article-meta">
+              <span>April 30, 2026</span>
+              <a href="article.html" class="article-link">READ MORE ↗</a>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="article-card" data-cur="READ">
+            <div class="article-thumb">
+              <picture>
+                <source srcset="assets/images/blog-3.webp" type="image/webp">
+                <img src="assets/images/blog-3.jpg" alt="Rapid Prototyping Tools for Growth Article" width="800"
+                  height="600" loading="lazy" decoding="async">
+              </picture>
+            </div>
+            <div class="pill-kicker on-light pill-micro">TOOLING</div>
+            <h3 class="article-title"><a href="article.html" class="title-link-clean">Best Prototyping & Interaction
+                Tools for Modern Designers</a></h3>
+            <div class="article-meta">
+              <span>April 30, 2026</span>
+              <a href="article.html" class="article-link">READ MORE ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SECTION 12: TRANSPARENCY & FREQUENTLY ASKED QUESTIONS (features/expand)
+         ====================================================================== -->
+    <!-- ============================================================
+     13. Transparency & FAQ Accordion
+     Frequently asked questions covering sprints, billing and process.
+     Editing hint: update questions and answers in accordion items.
+     ============================================================ -->
+    <section class="faq-dark-section" id="faq" data-bgcolor="#142016" data-textcolor="#FFFFFF">
+      <div class="container">
+        <div class="faq-grid">
+          <div>
+            <div class="pill-kicker on-dark">CLEAR TRANSPARENCY</div>
+            <h2 class="faq-h2">FREQUENTLY ASKED<br>INQUIRIES</h2>
+            <p class="faq-intro-p">
+              We believe in straightforward, transparent communication about timelines, scopes, pricing, and
+              deliverables from day one.
+            </p>
+            <a href="#planner" class="faq-sprint-btn" data-cur="PLAN">
+              <svg viewBox="0 0 24 24">
+                <path d="M7 17L17 7M17 7H7M17 7V17" />
+              </svg>
+              <span>CONFIGURE A SPRINT</span>
+            </a>
+          </div>
+
+          <div class="faq-accordion" id="faqAccordion">
+            <!-- FAQ 1 -->
+            <div class="faq-item on">
+              <button class="faq-toggle" aria-expanded="true">
+                <span>What is your typical project timeline and sprint rhythm?</span>
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-content">
+                <div class="faq-content-inner">
+                  Our flagship sprint cycles typically span 6 to 12 weeks depending on scope. Brand identity sprints
+                  take 4–6 weeks, while bespoke flagship WebGL platforms and spatial web configurators operate on 8–10
+                  week agile delivery cadences with continuous staging previews and bi-weekly milestone demonstrations.
+                </div>
+              </div>
+            </div>
+
+            <!-- FAQ 2 -->
+            <div class="faq-item">
+              <button class="faq-toggle" aria-expanded="false">
+                <span>How do you collaborate with internal engineering teams?</span>
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-content">
+                <div class="faq-content-inner">
+                  We provide fully typed design tokens, zero-drift component repositories, Git worktrees, and documented
+                  WebGL / Three.js shader modules. We can either lead end-to-end full-stack implementation or integrate
+                  as an embedded senior creative engineering pod with your engineering leadership.
+                </div>
+              </div>
+            </div>
+
+            <!-- FAQ 3 -->
+            <div class="faq-item">
+              <button class="faq-toggle" aria-expanded="false">
+                <span>What engagement models and budget frameworks do you support?</span>
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-content">
+                <div class="faq-content-inner">
+                  We partner with venture-backed startups, global cultural institutions, and Fortune 500 enterprises
+                  through two primary models: fixed-deliverable milestone sprints for discrete flagship platforms, and
+                  quarterly studio retainers for continuous product evolution and experimental R&D.
+                </div>
+              </div>
+            </div>
+
+            <!-- FAQ 4 -->
+            <div class="faq-item">
+              <button class="faq-toggle" aria-expanded="false">
+                <span>Who owns the intellectual property and code upon completion?</span>
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-content">
+                <div class="faq-content-inner">
+                  You retain 100% full, unencumbered ownership of all final designs, codebases, custom shader
+                  algorithms, 3D assets, vector libraries, and design system tokens upon final milestone sign-off.
+                </div>
+              </div>
+            </div>
+
+            <!-- FAQ 5 -->
+            <div class="faq-item">
+              <button class="faq-toggle" aria-expanded="false">
+                <span>How do you guarantee 60fps performance on mobile and desktop?</span>
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-content">
+                <div class="faq-content-inner">
+                  Every digital artifact we ship is audited for strict performance budgets: zero bulky third-party
+                  runtime dependencies, hardware-accelerated CSS transforms, WebGL level-of-detail (LOD) degradation
+                  fallbacks for mobile GPUs, and consistent 95+ Google Lighthouse scores across all breakpoints.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SECTION 13: INITIATIVE SCOPE PLANNER (Interactive Client Scope Builder)
+         ====================================================================== -->
+    <!-- ============================================================
+     14. Initiative Scope & Budget Planner
+     Interactive real-time budget, timeline and service selector.
+     Editing hint: modify rates and timeframes in main.js.
+     ============================================================ -->
+    <section class="planner-section" id="planner" data-bgcolor="#121C14" data-textcolor="#FFFFFF">
+      <div class="container">
+        <div class="works-header works-header-spaced">
+          <div>
+            <div class="pill-kicker on-dark">INTERACTIVE SCOPE BUILDER</div>
+            <h2 class="works-h2">PLAN YOUR INITIATIVE</h2>
+          </div>
+          <div class="muted-desc-text">
+            Select your discipline, timeline, and production scale to preview targeted deliverables and generate an
+            instant project brief.
+          </div>
+        </div>
+
+        <div class="planner-card">
+          <!-- Selection Column -->
+          <div class="planner-options-col">
+            <!-- Group 1: Discipline -->
+            <div>
+              <div class="planner-group-label">1. Primary Discipline Focus</div>
+              <div class="planner-pills" data-group="discipline">
+                <button type="button" class="plan-pill active" data-val="Flagship WebGL Platform">Flagship WebGL
+                  Platform</button>
+                <button type="button" class="plan-pill" data-val="Brand & Motion Identity">Brand & Motion
+                  Identity</button>
+                <button type="button" class="plan-pill" data-val="Spatial 3D Configurator">Spatial 3D
+                  Configurator</button>
+                <button type="button" class="plan-pill" data-val="Design System & Full-Stack">Design System &
+                  Full-Stack</button>
+              </div>
+            </div>
+
+            <!-- Group 2: Cadence -->
+            <div>
+              <div class="planner-group-label">2. Velocity & Timeline Cadence</div>
+              <div class="planner-pills" data-group="timeline">
+                <button type="button" class="plan-pill active" data-val="Standard (8–10 Weeks)">Standard (8–10
+                  Weeks)</button>
+                <button type="button" class="plan-pill" data-val="Expedited Sprint (4–6 Weeks)">Expedited Sprint (4–6
+                  Weeks)</button>
+                <button type="button" class="plan-pill" data-val="Quarterly Studio Retainer">Quarterly Studio
+                  Retainer</button>
+              </div>
+            </div>
+
+            <!-- Group 3: Scale -->
+            <div>
+              <div class="planner-group-label">3. Production Scale</div>
+              <div class="planner-pills" data-group="scale">
+                <button type="button" class="plan-pill active" data-val="Enterprise Production">Enterprise
+                  Production</button>
+                <button type="button" class="plan-pill" data-val="Growth / Series B+">Growth / Series B+</button>
+                <button type="button" class="plan-pill" data-val="Boutique / Cultural Institution">Boutique /
+                  Cultural</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dynamic Live Summary Card -->
+          <div class="planner-summary-col">
+            <div>
+              <div class="summary-kicker">CURATED INITIATIVE SCOPE</div>
+              <h3 class="summary-title" id="plannerSelectedDiscipline">Flagship WebGL Platform</h3>
+              <div class="summary-cadence" id="plannerSelectedTimeline">ESTIMATED CADENCE: Standard (8–10 Weeks)</div>
+
+              <ul class="summary-checklist" id="plannerDeliverables">
+                <!-- Dynamically populated -->
+              </ul>
+            </div>
+
+            <a href="mailto:hello@kromatik.studio" class="planner-cta-btn" id="plannerInquiryBtn">
+              <span>INITIALIZE BRIEF ↗</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SECTION 14: CONTACT & FOOTER
+         ====================================================================== -->
+    <!-- ============================================================
+     15. Footer & Colophon
+     Direct contact links, city local clocks, colophon and legal.
+     Editing hint: update contact emails, links and copyright.
+     ============================================================ -->
+    <footer class="site-footer" id="contact" data-bgcolor="#0E1610" data-textcolor="#FFFFFF">
+      <div class="container ft-inner">
+        <div class="footer-cta-box ft-cta">
+          <div class="pill-kicker on-dark">START A CONVERSATION</div>
+          <h2 class="footer-cta-h2 ft-title">
+            <span class="ft-line"><span class="ft-line-in">LET'S BUILD SOMETHING</span></span>
+            <span class="ft-line"><span class="ft-line-in">UNFORGETTABLE <em>TOGETHER</em></span></span>
+          </h2>
+          <div class="ft-btnwrap">
+            <a href="mailto:hello@kromatik.studio" class="footer-email-btn" data-cur="EMAIL">
+              <svg viewBox="0 0 24 24">
+                <path d="M7 17L17 7M17 7H7M17 7V17" />
+              </svg>
+              <span>hello@kromatik.studio</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="ft-grid">
+          <div class="ft-col">
+            <div class="ft-h">STUDIO</div><a href="#about">About</a><a href="#process">Process</a><a
+              href="#atelier">Atelier</a><a href="#testimonials">Voices</a>
+          </div>
+          <div class="ft-col">
+            <div class="ft-h">WORK</div><a href="#services">Services</a><a href="#works">Selected Works</a><a
+              href="#accolades">Awards</a><a href="#insights">Journal</a>
+          </div>
+          <div class="ft-col">
+            <div class="ft-h">SOCIAL</div><a href="https://instagram.com" target="_blank" rel="noopener">Instagram
+              &#8599;</a><a href="https://dribbble.com" target="_blank" rel="noopener">Dribbble &#8599;</a><a
+              href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn &#8599;</a><a
+              href="https://behance.net" target="_blank" rel="noopener">Behance &#8599;</a>
+          </div>
+          <div class="ft-col">
+            <div class="ft-h">OFFICES</div><span>Z&uuml;rich</span><span>Tokyo</span><span>New York</span>
+          </div>
+        </div>
+
+        <div class="ft-wordmark" id="ftWordmark" aria-label="Kromatik">
+          <span class="ft-char-wrap"><span class="ft-char">K</span></span>
+          <span class="ft-char-wrap"><span class="ft-char">R</span></span>
+          <span class="ft-char-wrap"><span class="ft-char">O</span></span>
+          <span class="ft-char-wrap"><span class="ft-char">M</span></span>
+          <span class="ft-char-wrap"><span class="ft-char">A</span></span>
+          <span class="ft-char-wrap"><span class="ft-char">T</span></span>
+          <span class="ft-char-wrap"><span class="ft-char">I</span></span>
+          <span class="ft-char-wrap"><span class="ft-char">K</span></span>
+        </div>
+
+        <div class="footer-bottom-strip">
+          <div class="brand-logo brand-logo-compact">Kromatik<span class="dot">.</span></div>
+          <div>&copy; 2026 Kromatik Studio. All rights reserved.</div>
+          <button class="ft-top" id="ftTop" type="button">BACK TO TOP &#8593;</button>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <!-- ========================================================================
+       SHARED HELPERS & COMPONENT INITIALIZATIONS
+       ======================================================================== -->
+  <script src="assets/js/main.js"></script>
+</body>
+
+</html>
