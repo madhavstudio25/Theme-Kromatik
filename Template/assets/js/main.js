@@ -61,10 +61,6 @@ function initCustomCursor() {
   var label = document.getElementById('cux-label');
   if (!dot || !ring || !label) return;
 
-  if (document.body.classList.contains('theme-light')) {
-    document.body.classList.add('cux-on-light');
-  }
-
   var mx = -200, my = -200;
   var rx = -200, ry = -200;
   var hasMoved = false;
@@ -82,26 +78,10 @@ function initCustomCursor() {
     // Direct hardware update on input event: 0ms delay!
     dot.style.transform = 'translate3d(' + mx + 'px, ' + my + 'px, 0)';
 
-    // 1. Theme Detection (includes newly redesigned .about-editorial-section and theme-light pages)
-    var yellowEl = e.target.closest('.svc-card.featured, .hero-goal-card, .circular-seal-badge, .footer-email-btn');
-    var isBodyLight = document.body.classList.contains('theme-light');
-    var lightEl = isBodyLight || e.target.closest('.about-editorial-section, .about-cream-section, .atelier-cream-section, .insights-cream-section, .process-section, .journal-archive-section, .article-single-section, [data-theme="light"]');
-
-    if (yellowEl) {
-      document.body.classList.add('cux-on-yellow');
-      document.body.classList.remove('cux-on-light');
-    } else if (lightEl) {
-      document.body.classList.add('cux-on-light');
-      document.body.classList.remove('cux-on-yellow');
-    } else {
-      document.body.classList.remove('cux-on-light');
-      document.body.classList.remove('cux-on-yellow');
-    }
-
-    // 2. State Detection: Distinct Badge Hover vs Pill Button vs Interactive Hover
+    // State Detection: Distinct Badge Hover vs Pill Button vs Interactive Inverting Lens
     var labelEl = e.target.closest('[data-cur]');
-    var pillBtnEl = e.target.closest('.btn-read-all');
-    var interactiveEl = e.target.closest('a, button, [role="button"], input, select, textarea, .plan-pill, .faq-toggle, .svc-card, .member-card, .cap-item, .quote-word, .q-tab-btn, .svc-arrow-btn, .work-arrow-circle, .btn-learn-more, .about-play-badge, .faq-sprint-btn, .footer-email-btn');
+    var pillBtnEl = e.target.closest('.btn-read-all, .header-cta-btn');
+    var interactiveEl = e.target.closest('a, button, [role="button"], input, select, textarea, .plan-pill, .faq-toggle, .svc-card, .member-card, .cap-item, .quote-word, .q-tab-btn, .svc-arrow-btn, .work-arrow-circle, .btn-learn-more, .about-play-badge, .faq-sprint-btn, .footer-email-btn, .j-tab-btn, .filter-tab-btn, .filter-btn, .mo-sound-btn, .sound-btn');
 
     if (labelEl && labelEl.getAttribute('data-cur')) {
       var text = labelEl.getAttribute('data-cur');
@@ -126,11 +106,7 @@ function initCustomCursor() {
 
   // Cleanly hide when mouse leaves the document window or tab loses focus
   function hideCursor() {
-    var isBodyLight = document.body.classList.contains('theme-light');
-    document.body.classList.remove('cux-active', 'is-hover-label', 'is-hover-interactive', 'is-hover-pill-btn', 'cux-on-yellow');
-    if (!isBodyLight) {
-      document.body.classList.remove('cux-on-light');
-    }
+    document.body.classList.remove('cux-active', 'is-hover-label', 'is-hover-interactive', 'is-hover-pill-btn');
   }
 
   document.addEventListener('mouseleave', hideCursor);
